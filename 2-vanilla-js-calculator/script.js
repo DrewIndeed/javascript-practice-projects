@@ -48,3 +48,36 @@ setInterval(() => {
 }, 1000);
 
 
+// HANDLE THE BUTTON
+var showing_on_result = "";
+// handle 1 - 9 
+var result_area = document.getElementsByClassName("result__container");
+for (let i = 1; i <= 9; i++) {
+    document.getElementById("k" + i).addEventListener("click", () => {
+        if (showing_on_result.length <= 23)
+            showing_on_result += document.getElementById("k" + i).innerHTML;
+        
+        result_area[0].innerHTML = showing_on_result;
+    });
+}
+// handle 0
+document.getElementById("k10").addEventListener("click", () => {
+    if (showing_on_result.length > 1) {
+        showing_on_result += document.getElementById("k10").innerHTML;
+        result_area[0].innerHTML = showing_on_result;
+    }
+});
+// handle C
+document.getElementById("k12").addEventListener("click", () => {
+    showing_on_result = "";
+    result_area[0].innerHTML = "0";
+});
+// handle .
+document.getElementById("k11").addEventListener("click", () => {
+    if (!showing_on_result.includes(".")) {
+        if (result_area[0].innerHTML.length == 1)
+            showing_on_result += "0";
+        showing_on_result += ".";
+        result_area[0].innerHTML = showing_on_result;
+    } 
+});
