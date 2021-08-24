@@ -1,0 +1,139 @@
+/* first line of css */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    opacity: 0.9;
+}
+
+.main__container {
+  background-repeat: none;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.clock__row {
+  background-color: transparent;
+  margin: 40px;
+  text-align: center;
+}
+
+.time__display {
+  color: rgba(38, 237, 255, 1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  margin-bottom: 40px;
+  font-size: 50px;
+}
+
+.calculator__row {
+  width: 400px;
+  background-color: rgba(96, 38, 255, 0.7);
+  border-radius: 10px;
+  height: 425px;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: all 0.5s;
+}
+
+.calculator__row:hover {
+    transform: scale(1.08);
+}
+
+.result__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  background-color: transparent;
+  margin: 10px 10px 0 10px;
+  padding: 20px;
+  font-size: 30px;
+  border-radius: 5px;
+  border: 1px solid cyan;
+  color: cyan;
+}
+
+.operators {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px 10px 10px;
+    height: 50px;
+}
+
+.operator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    width: 86px;
+    height: 50px;
+    background-color: rgba(87, 255, 65, 0.8);
+    border-radius: 5px;
+}
+
+.other-keys {
+    display: flex;
+    flex-grow: 100;
+    margin: 0 10px 10px 10px;
+    justify-content: space-between;
+}
+
+.keys {
+    width:284px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.keys__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 50px;
+    background-color: yellow;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.equal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width:86px;
+    border-radius: 5px;
+    font-size: 30px;
+    color: white;
+}
+
+
