@@ -127,20 +127,27 @@ equal_key.addEventListener("click", () => {
     if (!break_down[2] && showing_on_result)
       final_calculation += showing_on_result;
 
-    console.log(final_calculation)
+    console.log(final_calculation);
     break_down = final_calculation.split(" ");
 
     var rs = 0;
-    if (break_down[1] == "+")
-      rs = parseInt(break_down[0], 10) + parseInt(break_down[2], 10);
-    else if (break_down[1] == "—")
-      rs = parseInt(break_down[0], 10) - parseInt(break_down[2], 10);
-    else if (break_down[1] == "×")
-      rs = parseInt(break_down[0], 10) * parseInt(break_down[2], 10);
-    else if (break_down[1] == "÷")
-      rs = parseInt(break_down[0], 10) / parseInt(break_down[2], 10);
 
-    console.log("= " + rs);
+    break_down[0] = parseFloat(break_down[0]);
+    break_down[0] = break_down[0].toString();
+    break_down[2] = parseFloat(break_down[2]);
+    break_down[2] = break_down[2].toString();
+
+    if (break_down[1] == "+")
+      rs = parseFloat(break_down[0]) + parseFloat(break_down[2]);
+    else if (break_down[1] == "—")
+      rs = parseFloat(break_down[0]) - parseFloat(break_down[2]);
+    else if (break_down[1] == "×")
+      rs = parseFloat(break_down[0]) * parseFloat(break_down[2]);
+    else if (break_down[1] == "÷")
+      rs = parseFloat(break_down[0]) / parseFloat(break_down[2]);
+
+    rs = rs.toString();
+    rs = parseFloat(rs);
     showing_on_result = rs.toString();
     final_calculation = "";
     final_operator = "";
@@ -149,26 +156,32 @@ equal_key.addEventListener("click", () => {
     for (const o of operators) {
       if (o.classList.contains("chosen")) o.classList.remove("chosen");
     }
-    result_area[0].innerHTML = rs;
+    console.log("= " + showing_on_result);
+    result_area[0].innerHTML = showing_on_result;
   }
 });
 
-
 // handle 0
 document.getElementById("k10").addEventListener("click", () => {
-  if (!(result_area[0].innerHTML.startsWith("0") &&  result_area[0].innerHTML.length == 1))
-  {
+  if (
+    !(
+      result_area[0].innerHTML.startsWith("0") &&
+      result_area[0].innerHTML.length == 1
+    )
+  ) {
     if (showing_on_result.length <= 23)
       showing_on_result += document.getElementById("k10").innerHTML;
     result_area[0].innerHTML = showing_on_result;
   }
 });
 
-// // handle ".""
-// document.getElementById("k11").addEventListener("click", () => {
-//   if (!showing_on_result.includes(".")) {
-//     if (result_area[0].innerHTML.length == 1) showing_on_result += "0";
-//     showing_on_result += ".";
-//     result_area[0].innerHTML = showing_on_result;
-//   }
-// });
+// handle ".""
+document.getElementById("k11").addEventListener("click", () => {
+  if (!result_area[0].innerHTML.includes(".")) {
+    if (showing_on_result.length <= 23) {
+      if (result_area[0].innerHTML == "0") showing_on_result += "0.";
+      else showing_on_result += ".";
+    }
+    result_area[0].innerHTML = showing_on_result;
+  }
+});
