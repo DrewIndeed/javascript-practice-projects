@@ -120,7 +120,6 @@ for (let i = 1; i <= 4; i++) {
 }
 
 // handle "=" sign
-
 var equal_key = document.getElementById("equal");
 equal_key.addEventListener("click", () => {
   if (showing_on_result && final_operator) {
@@ -154,13 +153,17 @@ equal_key.addEventListener("click", () => {
   }
 });
 
-// // handle 0
-// document.getElementById("k10").addEventListener("click", () => {
-//   if (showing_on_result.length >= 1) {
-//     showing_on_result += document.getElementById("k10").innerHTML;
-//     result_area[0].innerHTML = showing_on_result;
-//   }
-// });
+
+// handle 0
+document.getElementById("k10").addEventListener("click", () => {
+  if (!(result_area[0].innerHTML.startsWith("0") &&  result_area[0].innerHTML.length == 1))
+  {
+    if (showing_on_result.length <= 23)
+      showing_on_result += document.getElementById("k10").innerHTML;
+    result_area[0].innerHTML = showing_on_result;
+  }
+});
+
 // // handle ".""
 // document.getElementById("k11").addEventListener("click", () => {
 //   if (!showing_on_result.includes(".")) {
