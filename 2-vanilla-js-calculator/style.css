@@ -98,6 +98,11 @@ a:hover {
     border-radius: 5px;
 }
 
+.chosen {
+  background-color: rgb(37, 37, 37);
+  color: rgba(87, 255, 65, 0.8);
+}
+
 .other-keys {
     display: flex;
     flex-grow: 100;
