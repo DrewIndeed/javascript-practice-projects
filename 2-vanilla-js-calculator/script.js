@@ -63,56 +63,96 @@ for (let i = 1; i <= 9; i++) {
   });
 }
 
-
 // handle C
-document.getElementById("k12").addEventListener("click", () => { 
+document.getElementById("k12").addEventListener("click", () => {
   final_calculation = "";
   final_operator = "";
   showing_on_result = "";
   result_area[0].innerHTML = "0";
-  
+
   // remove effect from all operators
   var operators = document.getElementsByClassName("operator");
   for (const o of operators) {
-      if (o.classList.contains("chosen")) o.classList.remove("chosen");
+    if (o.classList.contains("chosen")) o.classList.remove("chosen");
   }
 });
 
 // handle operators
-for (let i = 1; i <= 4; i++) { 
-    document.getElementById("o" + i).addEventListener("click", () => {
-      // add effect to chosen button
-      var chosen_operator = document.getElementById("o" + i);
-      chosen_operator.classList.add("chosen");
+for (let i = 1; i <= 4; i++) {
+  document.getElementById("o" + i).addEventListener("click", () => {
+    // add effect to chosen button
+    var chosen_operator = document.getElementById("o" + i);
+    chosen_operator.classList.add("chosen");
 
-      // update calculation
-      // if there is no operator chosen yet
-      if (!final_operator) {
-        final_calculation += showing_on_result;
-        final_operator = chosen_operator.innerHTML;
-        final_calculation += " " + final_operator;
-        console.log(final_calculation);
+    // update calculation
+    // if there is no operator chosen yet
+    if (!final_operator) {
+      if (showing_on_result) final_calculation += showing_on_result;
+      else final_calculation += "0";
+
+      final_operator = chosen_operator.innerHTML;
+      final_calculation += " " + final_operator + " ";
+      showing_on_result = "";
+      console.log(final_calculation);
 
       // change the operator only when users choose another sign
-      } else {
-          if (final_calculation.length > 0) {
-            final_calculation = final_calculation.substring(0, final_calculation.length - 2);
-            final_operator = chosen_operator.innerHTML;
-            final_calculation += " " + final_operator;
-            console.log(final_calculation);
-          }
+    } else {
+      if (final_calculation.length > 0) {
+        final_calculation = final_calculation.substring(
+          0,
+          final_calculation.length - 3
+        );
+        final_operator = chosen_operator.innerHTML;
+        final_calculation += " " + final_operator + " ";
+        showing_on_result = "";
+        console.log(final_calculation);
       }
+    }
 
-      // remove effects from other buttons
-      var chosen_index = i;
-      for (let j = 1; j <= 4; j++) {
-        if (j == chosen_index) continue;
-        var other_operators = document.getElementById("o" + j);
-        other_operators.classList.remove("chosen");
-      }
-    });
+    // remove effects from other buttons
+    var chosen_index = i;
+    for (let j = 1; j <= 4; j++) {
+      if (j == chosen_index) continue;
+      var other_operators = document.getElementById("o" + j);
+      other_operators.classList.remove("chosen");
+    }
+  });
+}
+
+// handle "=" sign
+
+var equal_key = document.getElementById("equal");
+equal_key.addEventListener("click", () => {
+  if (showing_on_result && final_operator) {
+    var break_down = final_calculation.split(" ");
+    if (!break_down[2] && showing_on_result)
+      final_calculation += showing_on_result;
+
+    console.log(final_calculation)
+    break_down = final_calculation.split(" ");
+
+    var rs = 0;
+    if (break_down[1] == "+")
+      rs = parseInt(break_down[0], 10) + parseInt(break_down[2], 10);
+    else if (break_down[1] == "—")
+      rs = parseInt(break_down[0], 10) - parseInt(break_down[2], 10);
+    else if (break_down[1] == "×")
+      rs = parseInt(break_down[0], 10) * parseInt(break_down[2], 10);
+    else if (break_down[1] == "÷")
+      rs = parseInt(break_down[0], 10) / parseInt(break_down[2], 10);
+
+    console.log("= " + rs);
+    showing_on_result = rs.toString();
+    final_calculation = "";
+    final_operator = "";
+    // remove effect from all operators
+    var operators = document.getElementsByClassName("operator");
+    for (const o of operators) {
+      if (o.classList.contains("chosen")) o.classList.remove("chosen");
+    }
+    result_area[0].innerHTML = rs;
   }
-  
+});
 
 // // handle 0
 // document.getElementById("k10").addEventListener("click", () => {
@@ -129,4 +169,3 @@ for (let i = 1; i <= 4; i++) {
 //     result_area[0].innerHTML = showing_on_result;
 //   }
 // });
-
