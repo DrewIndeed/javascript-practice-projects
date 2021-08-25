@@ -48,8 +48,9 @@ setInterval(() => {
 }, 1000);
 
 // HANDLE THE BUTTONS
+var final_calculation = "";
+var final_operator = "";
 var showing_on_result = "";
-
 
 // handle 1 - 9
 var result_area = document.getElementsByClassName("result__container");
@@ -64,7 +65,9 @@ for (let i = 1; i <= 9; i++) {
 
 
 // handle C
-document.getElementById("k12").addEventListener("click", () => {
+document.getElementById("k12").addEventListener("click", () => { 
+  final_calculation = "";
+  final_operator = "";
   showing_on_result = "";
   result_area[0].innerHTML = "0";
   
@@ -75,6 +78,41 @@ document.getElementById("k12").addEventListener("click", () => {
   }
 });
 
+// handle operators
+for (let i = 1; i <= 4; i++) { 
+    document.getElementById("o" + i).addEventListener("click", () => {
+      // add effect to chosen button
+      var chosen_operator = document.getElementById("o" + i);
+      chosen_operator.classList.add("chosen");
+
+      // update calculation
+      // if there is no operator chosen yet
+      if (!final_operator) {
+        final_calculation += showing_on_result;
+        final_operator = chosen_operator.innerHTML;
+        final_calculation += " " + final_operator;
+        console.log(final_calculation);
+
+      // change the operator only when users choose another sign
+      } else {
+          if (final_calculation.length > 0) {
+            final_calculation = final_calculation.substring(0, final_calculation.length - 2);
+            final_operator = chosen_operator.innerHTML;
+            final_calculation += " " + final_operator;
+            console.log(final_calculation);
+          }
+      }
+
+      // remove effects from other buttons
+      var chosen_index = i;
+      for (let j = 1; j <= 4; j++) {
+        if (j == chosen_index) continue;
+        var other_operators = document.getElementById("o" + j);
+        other_operators.classList.remove("chosen");
+      }
+    });
+  }
+  
 
 // // handle 0
 // document.getElementById("k10").addEventListener("click", () => {
@@ -92,21 +130,3 @@ document.getElementById("k12").addEventListener("click", () => {
 //   }
 // });
 
-
-
-// handle operators
-for (let i = 1; i <= 4; i++) {
-  document.getElementById("o" + i).addEventListener("click", () => {
-    // add effect to chosen button
-    var chosen_operator = document.getElementById("o" + i);
-    chosen_operator.classList.add("chosen");
-    
-    // remove effects from other buttons
-    var chosen_index = i;
-    for (let j = 1; j <= 4; j++) {
-      if (j == chosen_index) continue;
-      var other_operators = document.getElementById("o" + j);
-      other_operators.classList.remove("chosen");
-    }
-  });
-}
