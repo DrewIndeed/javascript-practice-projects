@@ -266,7 +266,9 @@ do {
 // add spots in destiny decision
 var destiny = document.getElementById("destiny");
 var chosenCountryName = countryList[pickCountryRandom];
-chosenCountryName = chosenCountryName.replace(/[^a-zA-Z0-9]/g, "").toLocaleUpperCase();
+chosenCountryName = chosenCountryName
+  .replace(/[^a-zA-Z0-9]/g, "")
+  .toLocaleUpperCase();
 console.log(chosenCountryName);
 for (let guessSpot = 0; guessSpot < chosenCountryName.length; guessSpot++) {
   destiny.innerHTML += '<div class="spot">__</div>';
@@ -276,28 +278,36 @@ for (let guessSpot = 0; guessSpot < chosenCountryName.length; guessSpot++) {
 var listOfSpots = document.getElementsByClassName("spot");
 var letters = document.getElementsByClassName("letter");
 var remainingLives = 10;
+var countCorrect = 0;
 for (const letter of letters) {
   letter.addEventListener("click", () => {
-    for (let target = 0; target < chosenCountryName.length; target++) {
-        if (chosenCountryName[target] == letter.innerHTML) {
-            listOfSpots[target].innerHTML = letter.innerHTML;
-        }
-    }
-    // update effect whena letter is chosen
+    // update effect when  letter is chosen
     letter.classList.add("byebye");
-    remainingLives -= 1;
 
-    for (const spot of listOfSpots) {
-        if (spot.innerHTML == "__" && remainingLives == 0) {
-            remainingLives = 10;
-            alert("Game over!");
-            window.location.reload();
-        }
+    for (let target = 0; target < chosenCountryName.length; target++) {
+      if (chosenCountryName[target] == letter.innerHTML) {
+        listOfSpots[target].innerHTML = letter.innerHTML;
+        countCorrect += 1;
+      }
+    }
+
+    if (countCorrect == 0) {
+      remainingLives -= 1;
+      if (remainingLives == 0) {
+        alert("Game over!");
+        window.location.reload();
+      }
+    }
+    
+    if (countCorrect == chosenCountryName.length) {
+      setTimeout(function() {
+        alert("You won the freaking game!");
+        window.location.reload();
+      }, 1500);  
     }
 
     // update remaining lives
     document.getElementById("lives").innerHTML =
       "You have " + remainingLives + " lives remaining";
-
   });
 }
