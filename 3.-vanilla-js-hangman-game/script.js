@@ -284,26 +284,28 @@ for (const letter of letters) {
     // update effect when  letter is chosen
     letter.classList.add("byebye");
 
-    for (let target = 0; target < chosenCountryName.length; target++) {
-      if (chosenCountryName[target] == letter.innerHTML) {
-        listOfSpots[target].innerHTML = letter.innerHTML;
-        countCorrect += 1;
+    if (chosenCountryName.includes(letter.innerHTML)) {
+      for (let target = 0; target < chosenCountryName.length; target++) {
+            if (chosenCountryName[target] == letter.innerHTML) {
+              listOfSpots[target].innerHTML = letter.innerHTML;
+              countCorrect += 1;
+            }
+          }
+    }
+
+    if (countCorrect < chosenCountryName.length && !chosenCountryName.includes(letter.innerHTML) ) {
+      remainingLives -= 1;
+      if (remainingLives == 0) {
+        alert("Game over! The answer is " + chosenCountryName);
+        window.location.reload();
       }
     }
 
-    if (countCorrect == 0) {
-      remainingLives -= 1;
-      if (remainingLives == 0) {
-        alert("Game over!");
-        window.location.reload();
-      }
-    }
-    
     if (countCorrect == chosenCountryName.length) {
-      setTimeout(function() {
+      setTimeout(function () {
         alert("You won the freaking game!");
         window.location.reload();
-      }, 1500);  
+      }, 1000);
     }
 
     // update remaining lives
