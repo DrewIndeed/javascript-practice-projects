@@ -93,3 +93,7 @@ h1 {
 .spot {
     margin: 0 5px;
 }
+
+.byebye {
+    visibility: hidden;
+}

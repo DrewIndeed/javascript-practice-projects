@@ -272,3 +272,16 @@ for (let guessSpot = 0; guessSpot < chosenCountryName.length; guessSpot++) {
   destiny.innerHTML += '<div class="spot">__</div>';
 }
 
+// if a letter is clicked
+var letters = document.getElementsByClassName("letter");
+var remainingLives = 10;
+for (const letter of letters) {
+    letter.addEventListener("click", () => {
+        letter.classList.add("byebye");
+        remainingLives -= 1;
+        if (remainingLives == 0) {
+            alert("Game over!");
+            window.location.reload();
+        }
+    });
+}
