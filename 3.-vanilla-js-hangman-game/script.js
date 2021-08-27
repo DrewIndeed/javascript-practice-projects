@@ -266,22 +266,35 @@ do {
 // add spots in destiny decision
 var destiny = document.getElementById("destiny");
 var chosenCountryName = countryList[pickCountryRandom];
-chosenCountryName = chosenCountryName.replace(/[^a-zA-Z0-9]/g,'');
+chosenCountryName = chosenCountryName.replace(/[^a-zA-Z0-9]/g, "").toLocaleUpperCase();
 console.log(chosenCountryName);
 for (let guessSpot = 0; guessSpot < chosenCountryName.length; guessSpot++) {
   destiny.innerHTML += '<div class="spot">__</div>';
 }
 
 // if a letter is clicked
+var listOfSpots = document.getElementsByClassName("spot");
 var letters = document.getElementsByClassName("letter");
 var remainingLives = 10;
 for (const letter of letters) {
-    letter.addEventListener("click", () => {
-        letter.classList.add("byebye");
-        remainingLives -= 1;
-        if (remainingLives == 0) {
-            alert("Game over!");
-            window.location.reload();
+  letter.addEventListener("click", () => {
+    for (let target = 0; target < chosenCountryName.length; target++) {
+        if (chosenCountryName[target] == letter.innerHTML) {
+            listOfSpots[target].innerHTML = letter.innerHTML;
         }
-    });
+    }
+
+    // update effect whena letter is chosen
+    letter.classList.add("byebye");
+    remainingLives -= 1;
+    // update remaining lives
+    document.getElementById("lives").innerHTML =
+      "You have " + remainingLives + " lives remaining";
+
+    // alert and refresh on last life
+    if (remainingLives == 0) {
+      alert("Game over!");
+      window.location.reload();
+    }
+  });
 }
