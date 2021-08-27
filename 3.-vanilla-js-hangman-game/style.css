@@ -58,6 +58,7 @@ h1 {
     padding: 10px 0;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .letter {
@@ -76,4 +77,19 @@ h1 {
 .letter:hover {
     background-color: white;
     color: red;
+}
+
+#destiny {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #000;
+    font-size: 500;
+    padding: 20px 40px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.spot {
+    margin: 0 5px;
 }
