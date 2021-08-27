@@ -283,18 +283,21 @@ for (const letter of letters) {
             listOfSpots[target].innerHTML = letter.innerHTML;
         }
     }
-
     // update effect whena letter is chosen
     letter.classList.add("byebye");
     remainingLives -= 1;
+
+    for (const spot of listOfSpots) {
+        if (spot.innerHTML == "__" && remainingLives == 0) {
+            remainingLives = 10;
+            alert("Game over!");
+            window.location.reload();
+        }
+    }
+
     // update remaining lives
     document.getElementById("lives").innerHTML =
       "You have " + remainingLives + " lives remaining";
 
-    // alert and refresh on last life
-    if (remainingLives == 0) {
-      alert("Game over!");
-      window.location.reload();
-    }
   });
 }
