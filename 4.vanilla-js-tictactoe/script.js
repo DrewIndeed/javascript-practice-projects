@@ -77,7 +77,7 @@ for (let i = 0; i < gridItems.length; i++) {
       setTimeout(() => {
         alert(currentMark == "X" ? "O" + " won!" : "X" + " won!");
         window.location.reload();
-      }, 1000);
+      }, 550);
     }
   });
 }
