@@ -151,7 +151,7 @@ input:focus {
   padding: 10px 25px;
 }
 
-.task {
+.task, .task-completed {
   display: flex;
   align-items: center;
   background-color: white;
@@ -167,7 +167,7 @@ input:focus {
   font-weight: 100;
 }
 
-.tasks::-webkit-scrollbar, .task::-webkit-scrollbar {
+.tasks::-webkit-scrollbar, .task::-webkit-scrollbar, .task-completed::-webkit-scrollbar {
   display: none;
 }
 
@@ -177,7 +177,7 @@ input:focus {
   letter-spacing: 2px;
 }
 
-.task:hover {
+.task:hover, .task-completed:hover {
   border-left: 8px solid rgb(255, 66, 66);
   border-bottom: 2px solid rgb(255, 66, 66);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

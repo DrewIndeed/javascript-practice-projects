@@ -29,7 +29,7 @@ function renderDataForCompleted() {
   if (completedList.length > 0) {
     completedSlot.innerHTML = "";
     for (const task of completedList) {
-      completedSlot.innerHTML += '<div class="task reverse">' + task + "</div>";
+      completedSlot.innerHTML += '<div class="task-completed reverse">' + task + "</div>";
     }
   } else if (completedList.length == 0) {
     completedSlot.innerHTML = `<p id="empty-placeholder">Make the best of your time 🦾</p>`;
@@ -44,7 +44,10 @@ function deleteOnClick() {
       setTimeout(() => {
         contentList.splice(i, 1);
         localStorage.setItem("contentList", JSON.stringify(contentList));
+        completedList.push(allTasks[i].innerHTML);
+        localStorage.setItem("completedList", JSON.stringify(completedList));
         renderDataForCurrent();
+        renderDataForCompleted();
         deleteOnClick();
       }, 1000);
     });
