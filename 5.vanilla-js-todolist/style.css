@@ -184,6 +184,12 @@ input:focus {
   transform: scale(1.08);
 }
 
+.disapearing {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.8s, opacity 0.8s linear;
+}
+
 .reverse {
   border-left: 8px solid rgb(31, 25, 25);
   border-bottom: 2px solid rgb(31, 25, 25);

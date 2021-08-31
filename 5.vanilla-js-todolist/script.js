@@ -25,10 +25,13 @@ function deleteOnClick() {
   var allTasks = document.getElementsByClassName("task");
   for (let i = 0; i < allTasks.length; i++) {
     allTasks[i].addEventListener("click", () => {
-      contentList.splice(i, 1);
-      localStorage.setItem("contentList", JSON.stringify(contentList));
-      getDataAndRender();
-      deleteOnClick();
+      allTasks[i].classList.add("disapearing");
+      setTimeout(() => {
+        contentList.splice(i, 1);
+        localStorage.setItem("contentList", JSON.stringify(contentList));
+        getDataAndRender();
+        deleteOnClick();
+      }, 1000);
     });
   }
 }
