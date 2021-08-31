@@ -19,6 +19,13 @@ body {
   padding: 25px;
   box-shadow: 0 0 20px rgba(255, 66, 66, 0.5);
   margin-bottom: 30px;
+  transition: all 0.5s;
+}
+
+.title:hover {
+  transform: scale(1.08);
+  background-color: white;
+  opacity: 0.8;
 }
 
 .title__content {
