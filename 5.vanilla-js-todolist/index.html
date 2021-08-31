@@ -17,8 +17,8 @@
     <div class="boxes">
         <div class="box">
             <div class="create">
-                <form id="form" action="./index.html" method="GET">
-                    <input type="text" id="content" name="content" size="40" placeholder="What are you up to?">
+                <form id="form" action="./index.html" onsubmit="save_data()">
+                    <input type="text" id="content" name="content" size="35" placeholder="What are you up to?">
                     <button type="submit" id="submit__button" value="submit">✓</button>
                 </form>
             </div>
@@ -27,10 +27,8 @@
         <div class="box">
             <div class="current">
                 <h2 id="current__title">Your To-do List 🚀</h2>
-                <div class="tasks">
-                    <div class="task"></div>
-                    <div class="task"></div>
-                    <div class="task"></div>
+                <div id="current-tasks" class="tasks">
+                    <p id="empty-placeholder">Let's add some tasks and be productive 🍀</p>
                 </div>
             </div>
         </div>
@@ -38,10 +36,8 @@
         <div class="box">
             <div class="completed">
                 <h2 id="completed__title">Completed Missions 🔥</h2>
-                <div class="tasks">
-                    <div class="task reverse"></div>
-                    <div class="task reverse"></div>
-                    <div class="task reverse"></div>
+                <div id="completed-tasks" class="tasks">
+                    
                 </div>
             </div>
         </div>
