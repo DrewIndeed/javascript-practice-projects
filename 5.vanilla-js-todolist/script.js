@@ -44,7 +44,7 @@ function deleteOnClick() {
       setTimeout(() => {
         contentList.splice(i, 1);
         localStorage.setItem("contentList", JSON.stringify(contentList));
-        completedList.push(allTasks[i].innerHTML);
+        completedList.push("✅ " + allTasks[i].innerHTML);
         localStorage.setItem("completedList", JSON.stringify(completedList));
         renderDataForCurrent();
         renderDataForCompleted();
