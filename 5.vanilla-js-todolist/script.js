@@ -48,12 +48,29 @@ function deleteOnClick() {
         localStorage.setItem("completedList", JSON.stringify(completedList));
         renderDataForCurrent();
         renderDataForCompleted();
+        deleteOnClickCompleted();
         deleteOnClick();
       }, 1000);
     });
   }
 }
 
+function deleteOnClickCompleted() {
+    var allTasks = document.getElementsByClassName("task-completed");
+    for (let i = 0; i < allTasks.length; i++) {
+      allTasks[i].addEventListener("click", () => {
+        allTasks[i].classList.add("disappearing");
+        setTimeout(() => {
+          completedList.splice(i, 1);
+          localStorage.setItem("completedList", JSON.stringify(completedList));
+          renderDataForCompleted();
+          deleteOnClickCompleted();
+        }, 1000);
+      });
+    }
+  }
+
 renderDataForCurrent();
 renderDataForCompleted()
 deleteOnClick();
+deleteOnClickCompleted()
