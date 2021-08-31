@@ -25,7 +25,7 @@ function deleteOnClick() {
   var allTasks = document.getElementsByClassName("task");
   for (let i = 0; i < allTasks.length; i++) {
     allTasks[i].addEventListener("click", () => {
-      allTasks[i].classList.add("disapearing");
+      allTasks[i].classList.add("disappearing");
       setTimeout(() => {
         contentList.splice(i, 1);
         localStorage.setItem("contentList", JSON.stringify(contentList));

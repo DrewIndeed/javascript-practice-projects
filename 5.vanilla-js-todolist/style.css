@@ -184,7 +184,7 @@ input:focus {
   transform: scale(1.08);
 }
 
-.disapearing {
+.disappearing {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s 0.8s, opacity 0.8s linear;
