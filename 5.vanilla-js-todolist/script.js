@@ -1,6 +1,8 @@
 // get data list from local storage
 var currentlyOnStorage = JSON.parse(localStorage.getItem("contentList"));
 var contentList = currentlyOnStorage === null ? [] : currentlyOnStorage;
+var currentlyOnCompleted = JSON.parse(localStorage.getItem("completedList"));
+var completedList = currentlyOnCompleted === null ? [] : currentlyOnCompleted;
 
 function save_data() {
   // add new data to local storage
@@ -8,7 +10,7 @@ function save_data() {
   localStorage.setItem("contentList", JSON.stringify(contentList));
 }
 
-function getDataAndRender() {
+function renderDataForCurrent() {
   // add new task slot
   var todoSlot = document.getElementById("current-tasks");
   if (contentList.length > 0) {
@@ -21,6 +23,19 @@ function getDataAndRender() {
   }
 }
 
+function renderDataForCompleted() {
+  // add completed task slot
+  var completedSlot = document.getElementById("completed-tasks");
+  if (completedList.length > 0) {
+    completedSlot.innerHTML = "";
+    for (const task of completedList) {
+      completedSlot.innerHTML += '<div class="task reverse">' + task + "</div>";
+    }
+  } else if (completedList.length == 0) {
+    completedSlot.innerHTML = `<p id="empty-placeholder">Make the best of your time 🦾</p>`;
+  }
+}
+
 function deleteOnClick() {
   var allTasks = document.getElementsByClassName("task");
   for (let i = 0; i < allTasks.length; i++) {
@@ -29,12 +44,13 @@ function deleteOnClick() {
       setTimeout(() => {
         contentList.splice(i, 1);
         localStorage.setItem("contentList", JSON.stringify(contentList));
-        getDataAndRender();
+        renderDataForCurrent();
         deleteOnClick();
       }, 1000);
     });
   }
 }
 
-getDataAndRender();
+renderDataForCurrent();
+renderDataForCompleted()
 deleteOnClick();
