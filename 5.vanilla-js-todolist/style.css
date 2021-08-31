@@ -24,8 +24,7 @@ body {
 
 .title:hover {
   transform: scale(1.08);
-  background-color: white;
-  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.692);
 }
 
 .title__content {
@@ -174,4 +173,14 @@ input:focus {
   border-bottom: 2px solid rgb(255, 66, 66);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transform: scale(1.08);
+}
+
+.reverse {
+  border-left: 8px solid rgb(31, 25, 25);
+  border-bottom: 2px solid rgb(31, 25, 25);
+}
+
+.reverse:hover {
+  border-left: 8px solid rgb(255, 66, 66);
+  border-bottom: 2px solid rgb(255, 66, 66);
 }
