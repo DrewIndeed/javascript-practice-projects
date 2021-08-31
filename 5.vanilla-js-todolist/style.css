@@ -107,6 +107,7 @@ body {
   padding: 5px 20px;
   border-radius: 10px;
   height: 30px;
+  font-family: monospace;
 }
 
 #content::placeholder {
@@ -162,10 +163,18 @@ input:focus {
   border-bottom: 2px solid greenyellow;
   padding: 0 20px;
   overflow-x: scroll;
+  font-family: monospace;
+  font-weight: 100;
 }
 
 .tasks::-webkit-scrollbar, .task::-webkit-scrollbar {
   display: none;
+}
+
+#empty-placeholder {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  letter-spacing: 2px;
 }
 
 .task:hover {
