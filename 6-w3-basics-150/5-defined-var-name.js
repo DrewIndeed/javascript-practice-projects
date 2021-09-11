@@ -1,3 +1,6 @@
+/**
+ * Define variables with customized names
+ */
 this['Andrew'] = 22
 this['Phiphi'] = 21
 this['Sophia'] = 28
