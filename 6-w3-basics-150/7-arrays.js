@@ -35,4 +35,19 @@ function maxSumEveryConsecutiveDigit(array, consecutiveNum) {
     return max;
 }
 
-console.log("Max is:", maxSumEveryConsecutiveDigit([8, 2, 3, 4, 9, 6, 7, 1], 4));
+// console.log("Max is:", maxSumEveryConsecutiveDigit([8, 2, 3, 4, 9, 6, 7, 1], 4));
+
+
+// max sum of all possible pairs 
+function maxSumAllPossiblePair(array) {
+    let max = 0;
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = i; j < array.length; j++) {
+            let sum = array[i] + array[j];
+            if (sum > max) max = sum;
+        }
+    }
+    return max;
+}
+
+// console.log(maxSumAllPossiblePair([8, 2, 3, 4, 9, 6, 7, 1, 99, 100]));
