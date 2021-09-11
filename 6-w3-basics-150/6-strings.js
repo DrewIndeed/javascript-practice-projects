@@ -29,7 +29,7 @@ function reverse(target) {
 console.log(reverse(target));
 
 
-function replaceCharWith(target, targetChar, item) {
+function replaceAllCharWith(target, targetChar, item) {
     const targetNew = target.split('').map(char => {
         if (char == targetChar)
             return item;
@@ -38,4 +38,10 @@ function replaceCharWith(target, targetChar, item) {
     return targetNew.join('');
 }
 
-console.log(replaceCharWith(target, 'e', '#'));
+console.log(replaceAllCharWith(target, 'e', '#'));
+
+function allLettersInOrder(target) {
+    return target.split('').sort().join('');
+}
+
+console.log(allLettersInOrder(target));
