@@ -9,7 +9,7 @@ function countUntilOneDigit(number) {
   // sum digit as a separated function
   function sumDigits(number) {
     let sum = 0;
-    while (number > 0) {
+    while (number > 1) {
       let digit = Math.floor(number % 10);
       number = number / 10;
       sum = sum + digit;
@@ -18,7 +18,7 @@ function countUntilOneDigit(number) {
   }
 
   if (number < 0) number = -number;
-  if (number <= 9) return number;
+  if (number <= 9) return 1;
   else {
     let sumDigit = sumDigits(number);
     while (sumDigit > 9) {
@@ -28,4 +28,4 @@ function countUntilOneDigit(number) {
   }
 }
 
-console.log(countUntilOneDigit(12121212));
+console.log(countUntilOneDigit(111111111));
