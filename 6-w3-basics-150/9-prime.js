@@ -15,7 +15,28 @@ function optimizedPrimeCheck(n) {
 }
 
 function printPrime(to, from = 1) {
-  for (let i = from; i <= to; i++) if (optimizedPrimeCheck(i)) console.log(i);
+  let rs = "";
+  for (let i = from; i <= to; i++) if (optimizedPrimeCheck(i)) rs += i + " ";
+  console.log(rs);
 }
 
 printPrime(50);
+
+function printPrimeFactors(n) {
+  if (n < 0) console.log("Negative");
+  else if (n < 2) console.log(n);
+  else {
+    let rs = "";
+    for (let i = 2; i <= n; i++) {
+      if (optimizedPrimeCheck(i)) {
+        while (n % i == 0) {
+          n = n / i;
+          rs += i.toString() + " ";
+        }
+      }
+    }
+    console.log(rs);
+  }
+}
+
+printPrimeFactors(120);
