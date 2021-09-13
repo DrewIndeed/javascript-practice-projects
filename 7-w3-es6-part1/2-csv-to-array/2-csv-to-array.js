@@ -1,7 +1,7 @@
 /**
- * Write a JavaScript program to converts 
+ * Write a JavaScript program to converts
  * a comma-separated values (CSV) string to a 2D array.
-*/
+ */
 
 const fileContent = `"LatD", "LatM", "LatS", "NS", "LonD", "LonM", "LonS", "EW", "City", "State"
 41,    5,   59, "N",     80,   39,    0, "W", "Youngstown", OH
@@ -134,14 +134,34 @@ const fileContent = `"LatD", "LatM", "LatS", "NS", "LonD", "LonM", "LonS", "EW",
 41,    9,   35, "N",     81,   14,   23, "W", "Ravenna", OH 
 `;
 
-const removeSpaces = fileContent.replace(/[ \"]/g, '');
-const allLines = removeSpaces.split('\n');
-for (let i = 1; i < allLines.length - 1; i++) {
-    let values = allLines[i].split(',');
+function csvToArray(csv) {
+  const removeSpaces = csv.replace(/[ \"]/g, "");
+  const allLines = removeSpaces.split("\n");
+  for (let i = 1; i < allLines.length - 1; i++) {
+    let values = allLines[i].split(",");
     let temp = [];
-    for (let j = 0; j < allLines[0].split(',').length; j++) {
-        temp.push([allLines[0].split(',')[j], values[j]]);
+    for (let j = 0; j < allLines[0].split(",").length; j++) {
+      temp.push([allLines[0].split(",")[j], values[j]]);
     }
     console.log(temp);
     console.log("---------------------------");
+  }
 }
+
+// csvToArray(fileContent);
+
+function csvToObject(csv) {
+    const removeSpaces = csv.replace(/[ \"]/g, "");
+    const allLines = removeSpaces.split("\n");
+    for (let i = 1; i < allLines.length - 1; i++) {
+      let values = allLines[i].split(",");
+      let temp = {};
+      for (let j = 0; j < allLines[0].split(",").length; j++) {
+        temp[allLines[0].split(",")[j]] = values[j];
+      }
+      console.log(temp);
+      console.log("---------------------------");
+    }
+}
+  
+// csvToObject(fileContent);
