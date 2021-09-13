@@ -1,0 +1,1 @@
+150 ES6 Fundamentals Exercises: https://www.w3resource.com/javascript-exercises/fundamental/index.php
