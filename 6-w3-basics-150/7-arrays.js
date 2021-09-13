@@ -79,3 +79,15 @@ function printAppearTheMost(array) {
 // sort the strings of a given array of strings in order of increasing lengths
 console.log(["anderson", "an", "andrew", "ashley"].sort((a, b) => { return a.length - b.length }));
 
+
+// swap two halves of an array with equal lengths (array with even length)
+function swapTwoHalves(array) {
+  console.log(array);
+  for (let i = 0; i < array.length / 2; i++) {
+    let secondIndex = (array.length / 2) + i;
+    swapItemsAt(array, i, secondIndex);
+  }
+  console.log(array);
+}
+
+swapTwoHalves([8, 2, 3, 4, 9, 6, 7, 1, 99, 100]);
