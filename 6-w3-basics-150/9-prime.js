@@ -3,6 +3,7 @@
  * all prime numbers between 1 and a given integer.
  */
 
+// check prime by checking if numbers are in forms: 6k - 1, 6k +1
 function optimizedPrimeCheck(n) {
   if (n <= 3) return n > 1;
   if (n % 2 == 0 || n % 3 == 0) return false;
@@ -14,6 +15,8 @@ function optimizedPrimeCheck(n) {
   return true;
 }
 
+
+// print prime numbers in an interval
 function printPrime(to, from = 1) {
   let rs = "";
   for (let i = from; i <= to; i++) if (optimizedPrimeCheck(i)) rs += i + " ";
@@ -22,6 +25,8 @@ function printPrime(to, from = 1) {
 
 printPrime(50);
 
+
+// print prime factors of an integer
 function printPrimeFactors(n) {
   if (n < 0) console.log("Negative");
   else if (n < 2) console.log(n);

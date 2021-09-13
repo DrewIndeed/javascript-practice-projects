@@ -3,13 +3,15 @@
  * trailing zeros in the decimal representation of the factorial of a given number.
 */
 
+
+// fatorize a number using recursion
 function factorial(n) {
     if (n < 0) return;
     if (n < 2) return 1;
     return n * factorial(n - 1);
 }
 
-
+// counting trailing zero of a factorial result
 function countTrailingZeros(num) {
     let rs = factorial(num);
     console.log("Target:", rs);
