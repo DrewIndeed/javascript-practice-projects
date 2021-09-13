@@ -52,6 +52,8 @@ function maxSumAllPossiblePair(array) {
 
 // console.log(maxSumAllPossiblePair([8, 2, 3, 4, 9, 6, 7, 1, 99, 100]));
 
+
+// print the element that appears the most with its frequency
 function printAppearTheMost(array) {
     let keys = new Set([...array]);
     let maxfElement;
@@ -69,8 +71,11 @@ function printAppearTheMost(array) {
     console.log(`Element ${maxfElement} with max frequency of ${maxf}`);
 }
 
-printAppearTheMost([
-  8, 8, 8, 8, 8, 8, 8, 2, 3, 4, 4, 4, 4, 9, 6, 7, 7, 7, 1, 1, 1, 1, 1, 99,
-]);
+// printAppearTheMost([
+//   8, 8, 8, 8, 8, 8, 8, 2, 3, 4, 4, 4, 4, 9, 6, 7, 7, 7, 1, 1, 1, 1, 1, 99,
+// ]);
 
+
+// sort the strings of a given array of strings in order of increasing lengths
+console.log(["anderson", "an", "andrew", "ashley"].sort((a, b) => { return a.length - b.length }));
 
