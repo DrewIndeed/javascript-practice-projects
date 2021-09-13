@@ -21,4 +21,4 @@ function animateRotateRight(targetString) {
   }, 200);
 }
 
-animateRotateRight("Andrew Le Nguyen ");
+animateRotateRight("Tran Ngoc Anh Thu - ");
