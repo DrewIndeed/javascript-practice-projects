@@ -1,3 +1,13 @@
+/**
+ *  Write a JavaScript program to combine the numbers 
+ * of a given array into an array containing 
+ * all combinations.
+*/
+
+// without explainations
+const powersetnoexplain = (arr) => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
+
+// with explainations
 const powerset =
     arr => arr.reduce(
         (a, v) => {
