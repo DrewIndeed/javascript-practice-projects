@@ -320,4 +320,51 @@ console.log("Inventory:", inventory);
 const objResult = inventory.find(({ name }) => name === "cherries");
 console.log("Cherries:", objResult);
 
+// --------------------------------------------------------------------------
+console.log("\n___________________ 13 ___________________");
+/**
+ * Has the second parameter mapFunction(element, index): execute a map function on each element of the array being created
+ * Array.from(obj, mapFn, thisArg) and Array.from(obj).map(mapFn, thisArg) => same result
+ * Length property of from() is 1
+ * From: string, set, map, nodeList, array-like object, arrow-functions, sequence generate (range)
+ */
+console.log("--- from test 1: String ---");
+console.log("String: Andrew");
+console.log("Result:", Array.from("Andrew"));
+console.log("\n--- from test 2: Set ---");
+console.log("duplicateArray:", duplicateArray);
+console.log("Result:", Array.from(new Set(duplicateArray)));
+console.log("\n--- from test 3: Map ---");
+const testMap = new Map([
+  [1, 2],
+  [2, 4],
+  [4, 8],
+]);
+console.log("testMap:", testMap);
+console.log("Result:", Array.from(testMap));
+console.log("\n--- from test 4: Array-like object (arguments) ---");
+console.log("Arguments: (1,2,3)");
+function f() {
+  return Array.from(arguments);
+}
+console.log("Result:", f(1, 2, 3));
+console.log("\n--- from test 5: using arrow functions ---");
+console.log("Array: [1,2,3]");
+console.log(
+  "Doubled:",
+  Array.from([1, 2, 3], (x) => x + x)
+);
+console.log(
+  "With 1st arg as { length: 5 }:",
+  Array.from({ length: 5 }, (v, i) => i)
+);
+console.log("\n--- from test 6: sequence generator or the range function ---");
+function range(start, stop, step) {
+  return Array.from(
+    { length: (stop - start) / step + 1 },
+    (v, i) => start + i * step
+  );
+}
+console.log("Range(1, 10, 2):", range(1, 10, 2));
+console.log("Range(10, 20, 5):", range(10, 20, 5));
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
