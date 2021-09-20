@@ -130,12 +130,24 @@ let testObjectsArray = [
 ];
 let invalidCount = 0;
 function getValidCountInvalid(item) {
-    if (Number.isFinite(item.id) && item.id !== 0) { return true; }
-    invalidCount++;
-    return false;
+  if (Number.isFinite(item.id) && item.id !== 0) {
+    return true;
+  }
+  invalidCount++;
+  return false;
 }
 let filteredObjectsArray = testObjectsArray.filter(getValidCountInvalid);
-console.log('Original entries:', testObjectsArray);
-console.log('Valid objects:', filteredObjectsArray);
-console.log('Count invalid:', invalidCount);
+console.log("Original entries:", testObjectsArray);
+console.log("Valid objects:", filteredObjectsArray);
+console.log("Count invalid:", invalidCount);
+console.log("\n--- search a string in a strings array from a query string ---");
+let fruits = ["apple", "banana", "grapes", "mango", "orange"];
+console.log("All fruits:", fruits);
+function grabStringFromQuery(array, query) {
+  return array.filter((str) => str.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+}
+console.log("Query for 'an':", grabStringFromQuery(fruits, "an"));
+console.log("Query for 'ap':", grabStringFromQuery(fruits, "ap"));
+console.log("Query for 'o':",grabStringFromQuery(fruits, "o"));
+
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
