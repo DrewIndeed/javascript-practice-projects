@@ -13,7 +13,7 @@
  * 11. lastIndexOf: returns the last index at which a given element can be found in the array, or -1 if it is not present.
  * 12. includes:  determines whether an array includes a certain value among its entries; (value, fromIndex); fromIndex: -1, -100
  # 13. from: creates a new, shallow-copied Array instance from an array-like or iterable object.
- # 14. keys:
+ # 14. keys: creates an Array Interator object, containing the keys of the array
 */
 
 // test samples
@@ -367,4 +367,13 @@ function range(start, stop, step) {
 }
 console.log("Range(1, 10, 2):", range(1, 10, 2));
 console.log("Range(10, 20, 5):", range(10, 20, 5));
+
+// --------------------------------------------------------------------------
+console.log("\n___________________ 14 ___________________");
+console.log("\n--- keys test 1: basic ---");
+const fruits2 = ["Banana", "Orange", "Apple", "Mango"];
+const keys = fruits2.keys();
+console.log("Keys type:", keys);
+console.log("Loop throught to print:");
+for (const key of keys) console.log(`- Key: ${key}; Value: ${fruits[key]};`);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
