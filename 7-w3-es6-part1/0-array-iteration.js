@@ -260,8 +260,27 @@ console.log("\n___________________ 5 ___________________");
  */
 console.log("--- every test 1: check if all values are even ---");
 console.log("Array 1:", [12, 5, 8, 130, 44]);
-console.log('Only even test result:',[12, 5, 8, 130, 44].every((x) => x % 2 == 0));
+console.log(
+  "Only even test result:",
+  [12, 5, 8, 130, 44].every((x) => x % 2 == 0)
+);
 console.log("Array 2:", [12, 54, 18, 130, 44]);
-console.log('Only even test result:',[12, 54, 18, 130, 44].every((x) => x % 2 == 0));
-
+console.log(
+  "Only even test result:",
+  [12, 54, 18, 130, 44].every((x) => x % 2 == 0)
+);
+// --------------------------------------------------------------------------
+console.log("\n# Cool stuff from 5");
+console.log("--- check if an array is a subset of another array ---");
+function isSubset(array1, array2) {
+  return array2.every((element) => array1.includes(element));
+}
+const containerArr = [1, 2, 3, 4, 5, 6, 7];
+const subArray1 = [5, 6, 7];
+const subArray2 = [50, 6, 7];
+console.log('Container array:', containerArr);
+console.log('subArray1:', subArray1);
+console.log('Contain result 1:', isSubset(containerArr, subArray1));
+console.log('subArray2:', subArray2);
+console.log('Contain result 2:', isSubset(containerArr, subArray2));
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
