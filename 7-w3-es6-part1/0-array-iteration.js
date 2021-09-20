@@ -1,8 +1,8 @@
 /**
  * Examples for Array Iteration methods (from FCC there would be 8)
- # 01. forEach: perform a function once for each element
- # 02. map: preform a function once for each element and return a new adjusted array
- # 03. filter 
+ # 01. forEach: perform a function on each element
+ # 02. map: perform a function on each element + return new array
+ # 03. filter: perform a function with A CONDITION on each element + return new array
  # 04. reduce
  # 05. every
  # 06. some
@@ -51,7 +51,7 @@ console.log("nestedArray: ", nestedArray);
 console.log(`flattenArray: [ ${nestedArray.flat(Infinity).toString()} ]`);
 
 // --------------------------------------------------------------------------
-console.log("\n___________________ 2 ___________________");
+console.log("___________________ 2 ___________________");
 /**
  * [Creates a new array] by performing a function on each element
  * Does not work for array elements without values (undefined is a value too)
@@ -87,4 +87,29 @@ console.log(
 );
 console.log("numValueArray (original Number()):", numStrArray.map(Number));
 
+// --------------------------------------------------------------------------
+console.log("___________________ 3 ___________________");
+/**
+ * Expects a [synchronous function] -> does not wait for promises
+ * Cannot terminate by any way but to throw an exception
+ * Return: A new array with the elements that pass the condition. If no elements pass the test, an empty array will be returned.
+ * Usage: get new array after applying a condition
+ */
+function optimizedPrimeCheck(n) {
+  if (n <= 3) return n > 1;
+  if (n % 2 == 0 || n % 3 == 0) return false;
+  let i = 5;
+  while (i * i <= n) {
+    if (n % i == 0 || n % (i + 2) == 0) return false;
+    i += 6;
+  }
+  return true;
+}
+console.log("--- filter test 1: get strings with length of 6 ---");
+const strLenOf6 = names.filter((name) => name.length == 6);
+console.log("Names with length of 6:", strLenOf6);
+console.log("--- filter test 2: get primes only from array ---");
+const testPrimeArray = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+const onlyPrime = testPrimeArray.filter(optimizedPrimeCheck);
+console.log("onlyPrime:", onlyPrime);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
