@@ -161,6 +161,8 @@ console.log("\n___________________ 4 ___________________");
     + Starting index: 1
     + previousValue: the first value of the array if initialValue is no set
  * Second call: initialValue will become the previous value of the array
+ * Another cool stuff: running promises in sequence 
+  -> Visit this link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#running_promises_in_sequence
  */
 console.log("--- reduce test 1: sum all numbers in an array ---");
 const sumOfArray = numbers.reduce(
@@ -231,16 +233,21 @@ let people = [
   { name: "Huge", age: 50 },
 ];
 function groupBy(targetGroup, property) {
-    return targetGroup.reduce((prevState, curValue) => {
-        let groupKey = curValue[property];
-        if (!prevState[groupKey]) {
-            prevState[groupKey] = []
-        }
-        prevState[groupKey].push(curValue);
-        return prevState;
+  return targetGroup.reduce((prevState, curValue) => {
+    let groupKey = curValue[property];
+    if (!prevState[groupKey]) {
+      prevState[groupKey] = [];
+    }
+    prevState[groupKey].push(curValue);
+    return prevState;
   }, {});
 }
 console.log("People:", people);
-console.log("Grouped by age", groupBy(people, 'age'))
-console.log("Grouped by name", groupBy(people, 'name'))
+console.log("Grouped by age", groupBy(people, "age"));
+console.log("Grouped by name", groupBy(people, "name"));
+
+console.log("\n--- can replace the combination of filter() and map() ---");
+console.log(
+  `For example, you want to double only the positive integers in an array of integers. You might think of getting the positives using filter() and then double them using map() right?Reduce() can do that in one run`
+);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
