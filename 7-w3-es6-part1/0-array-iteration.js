@@ -5,8 +5,8 @@
  # 03. filter: perform a function with A CONDITION on each element + return new array
  # 04. reduce: perform a function with A STATE AND ACTION on each element + return new STATE (a value, an array, an object, ...)
  # 05. every: test if all elements passed a certain condition 
- # 06. some: 
- # 07. find
+ # 06. some: test if at least one element passed a certain condition
+ # 07. find: 
  # 08. findIndex
  * 09. reduceRight
  * 10. indexOf
@@ -283,4 +283,11 @@ console.log('subArray1:', subArray1);
 console.log('Contain result 1:', isSubset(containerArr, subArray1));
 console.log('subArray2:', subArray2);
 console.log('Contain result 2:', isSubset(containerArr, subArray2));
+
+// --------------------------------------------------------------------------
+console.log("\n___________________ 6 ___________________");
+console.log("--- some test 1: check if at least 1 number is odd in an array ---");
+const testSomeArray1 = [2, 4, 6, 8, 22, 44, 66, 1];
+console.log('testSomeArray1:', testSomeArray1);
+console.log('There is at least 1 odd number:', testSomeArray1.some(num => num % 3 == 0));
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
