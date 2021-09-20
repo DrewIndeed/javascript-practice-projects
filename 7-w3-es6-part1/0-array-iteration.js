@@ -44,6 +44,12 @@ Object.keys(obj).forEach((key, index) =>
   console.log(`Key: ${key}\tIndex: ${index}\tValue: ${obj[key]}`)
 );
 
+console.log("\n# Cool stuff from 1");
+console.log("--- Flatten an array ---");
+const nestedArray = [1, [2, 1002, 999], 3, [4, 5, [6, 7, [9, 8, 5]], 8, 9]];
+console.log("nestedArray: ", nestedArray);
+console.log(`flattenArray: [ ${nestedArray.flat(Infinity).toString()} ]`);
+
 // --------------------------------------------------------------------------
 console.log("\n___________________ 2 ___________________");
 /**
@@ -61,3 +67,24 @@ console.log(`Numbers: [ ${numbers.toString()} ]`);
 // a single-statement -> can omit the return keyword
 const numbers2 = numbers.map((value, index, array) => value * 2);
 console.log(`Numbers2: [ ${numbers2.toString()} ]`);
+
+console.log("\n# Cool stuff from 2");
+console.log(
+  "--- an array of number strings into an array of number values ---"
+);
+const numStrArray = ["1", "2", "3", "1.1", "2.2e2", "3e300"];
+console.log("numStrArray:", numStrArray);
+console.log("numValueArray (original parseInt()):", numStrArray.map(parseInt));
+/**
+ * Explainations found at: 
+    + https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+    + https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+*/
+const parseIntCustom = (element) => parseInt(element, 10);
+console.log(
+  "numValueArray (custom parseInt()):",
+  numStrArray.map(parseIntCustom)
+);
+console.log("numValueArray (original Number()):", numStrArray.map(Number));
+
+console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
