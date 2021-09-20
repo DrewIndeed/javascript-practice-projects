@@ -169,4 +169,12 @@ const sumOfArray = numbers.reduce(
   }
 );
 console.log("Sum of numbers array:", sumOfArray);
+console.log("\n--- reduce test 2: remove duplicates from array ---");
+let duplicateArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+let removeDuplicateArray = duplicateArray.reduce((previousValue, currentValue) => {
+    if (previousValue.indexOf(currentValue) === -1) previousValue.push(currentValue);
+    return previousValue;
+}, [])
+console.log('duplicateArray:', duplicateArray);
+console.log('removeDuplicate:', removeDuplicateArray); 
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
