@@ -176,5 +176,12 @@ let removeDuplicateArray = duplicateArray.reduce((previousValue, currentValue) =
     return previousValue;
 }, [])
 console.log('duplicateArray:', duplicateArray);
-console.log('removeDuplicate:', removeDuplicateArray); 
+console.log('removeDuplicate:', removeDuplicateArray);
+
+console.log("\n# Cool stuff from 4");
+console.log("--- flatten an array of arrays ---");
+const arrayOfArrays = [[0, 1], [2, 3], [4, 5]];
+const flattenArray = arrayOfArrays.reduce((prevState, curState) => prevState.concat(curState));
+console.log('arrayOfArrays:', arrayOfArrays);
+console.log('flattenArray:', flattenArray);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
