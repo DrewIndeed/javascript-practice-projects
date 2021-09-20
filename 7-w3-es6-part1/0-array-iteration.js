@@ -6,7 +6,7 @@
  # 04. reduce: perform a function with A STATE AND ACTION on each element + return new STATE (a value, an array, an object, ...)
  # 05. every: test if all elements passed a certain condition 
  # 06. some: test if at least one element passed a certain condition
- # 07. find: 
+ # 07. find: return the first value passed a certain condition
  # 08. findIndex
  * 09. reduceRight
  * 10. indexOf
@@ -249,7 +249,11 @@ console.log("Grouped by name", groupBy(people, "name"));
 
 console.log("\n--- can replace the combination of filter() and map() ---");
 console.log(
-  `For example, you want to double only the positive integers in an array of integers. You might think of getting the positives using filter() and then double them using map() right?Reduce() can do that in one run`
+  `
+  For example, you want to double only the positive integers in an array of integers.
+  You might think of getting the positives using filter()and then double
+  them using map() right?Reduce() can do that in one run
+  `
 );
 
 // --------------------------------------------------------------------------
@@ -278,16 +282,31 @@ function isSubset(array1, array2) {
 const containerArr = [1, 2, 3, 4, 5, 6, 7];
 const subArray1 = [5, 6, 7];
 const subArray2 = [50, 6, 7];
-console.log('Container array:', containerArr);
-console.log('subArray1:', subArray1);
-console.log('Contain result 1:', isSubset(containerArr, subArray1));
-console.log('subArray2:', subArray2);
-console.log('Contain result 2:', isSubset(containerArr, subArray2));
+console.log("Container array:", containerArr);
+console.log("subArray1:", subArray1);
+console.log("Contain result 1:", isSubset(containerArr, subArray1));
+console.log("subArray2:", subArray2);
+console.log("Contain result 2:", isSubset(containerArr, subArray2));
 
 // --------------------------------------------------------------------------
 console.log("\n___________________ 6 ___________________");
-console.log("--- some test 1: check if at least 1 number is odd in an array ---");
+console.log(
+  "--- some test 1: check if at least 1 number is odd in an array ---"
+);
 const testSomeArray1 = [2, 4, 6, 8, 22, 44, 66, 1];
-console.log('testSomeArray1:', testSomeArray1);
-console.log('There is at least 1 odd number:', testSomeArray1.some(num => num % 3 == 0));
+console.log("testSomeArray1:", testSomeArray1);
+console.log(
+  "There is at least 1 odd number:",
+  testSomeArray1.some((num) => num % 2 != 0)
+);
+
+// --------------------------------------------------------------------------
+console.log("\n___________________ 7 ___________________");
+console.log("--- find test 1: get the first odd number ---");
+console.log("testSomeArray1:", testSomeArray1);
+console.log(
+  "First odd number:",
+  testSomeArray1.find((num) => num % 2 != 0)
+);
+
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
