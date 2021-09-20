@@ -1,3 +1,7 @@
+/**
+ * Write a JavaScript program to return the minimum-maximum value of an array, 
+ * after applying the provided function to set comparing rule
+*/
 const findMaxMin = (arr, comparator = (a, b) => a - b) =>
   arr.reduce((prevValue, curValue) =>
     comparator(prevValue, curValue) >= 0 ? curValue : prevValue
