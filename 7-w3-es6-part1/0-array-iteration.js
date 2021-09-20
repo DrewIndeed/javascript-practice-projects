@@ -43,7 +43,7 @@ console.log("\n--- forEach test 2: iterate through object ---");
 Object.keys(obj).forEach((key, index) =>
   console.log(`Key: ${key}\tIndex: ${index}\tValue: ${obj[key]}`)
 );
-
+// --------------------------------------------------------------------------
 console.log("\n# Cool stuff from 1");
 console.log("--- Flatten an array ---");
 const nestedArray = [1, [2, 1002, 999], 3, [4, 5, [6, 7, [9, 8, 5]], 8, 9]];
@@ -67,7 +67,7 @@ console.log(`Numbers: [ ${numbers.toString()} ]`);
 // a single-statement -> can omit the return keyword
 const numbers2 = numbers.map((value, index, array) => value * 2);
 console.log(`Numbers2: [ ${numbers2.toString()} ]`);
-
+// --------------------------------------------------------------------------
 console.log("\n# Cool stuff from 2");
 console.log(
   "--- an array of number strings into an array of number values ---"
@@ -114,7 +114,7 @@ const testPrimeArray = [
 ];
 const onlyPrime = testPrimeArray.filter(optimizedPrimeCheck);
 console.log("onlyPrime:", onlyPrime);
-
+// --------------------------------------------------------------------------
 console.log("\n# Cool stuff from 3");
 console.log("--- filter invalid entries from JSON ---");
 let testObjectsArray = [
@@ -140,6 +140,7 @@ let filteredObjectsArray = testObjectsArray.filter(getValidCountInvalid);
 console.log("Original entries:", testObjectsArray);
 console.log("Valid objects:", filteredObjectsArray);
 console.log("Count invalid:", invalidCount);
+
 console.log("\n--- search a string in a strings array from a query string ---");
 let fruits = ["apple", "banana", "grapes", "mango", "orange"];
 console.log("All fruits:", fruits);
@@ -164,24 +165,58 @@ console.log("\n___________________ 4 ___________________");
 console.log("--- reduce test 1: sum all numbers in an array ---");
 const sumOfArray = numbers.reduce(
   (previousValue, currentValue, index, array) => {
-    console.log(`${previousValue}\t+ ${currentValue}\t= ${previousValue + currentValue}`);
+    console.log(
+      `${previousValue}\t+ ${currentValue}\t= ${previousValue + currentValue}`
+    );
     return previousValue + currentValue;
   }
 );
 console.log("Sum of numbers array:", sumOfArray);
 console.log("\n--- reduce test 2: remove duplicates from array ---");
-let duplicateArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
-let removeDuplicateArray = duplicateArray.reduce((previousValue, currentValue) => {
-    if (previousValue.indexOf(currentValue) === -1) previousValue.push(currentValue);
+let duplicateArray = [
+  "a",
+  "b",
+  "a",
+  "b",
+  "c",
+  "e",
+  "e",
+  "c",
+  "d",
+  "d",
+  "d",
+  "d",
+];
+let removeDuplicateArray = duplicateArray.reduce(
+  (previousValue, currentValue) => {
+    if (previousValue.indexOf(currentValue) === -1)
+      previousValue.push(currentValue);
     return previousValue;
-}, [])
-console.log('duplicateArray:', duplicateArray);
-console.log('removeDuplicate:', removeDuplicateArray);
-
+  },
+  []
+);
+console.log("duplicateArray:", duplicateArray);
+console.log("removeDuplicate:", removeDuplicateArray);
+// --------------------------------------------------------------------------
 console.log("\n# Cool stuff from 4");
 console.log("--- flatten an array of arrays ---");
-const arrayOfArrays = [[0, 1], [2, 3], [4, 5]];
-const flattenArray = arrayOfArrays.reduce((prevState, curState) => prevState.concat(curState));
-console.log('arrayOfArrays:', arrayOfArrays);
-console.log('flattenArray:', flattenArray);
+const arrayOfArrays = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+];
+const flattenArray = arrayOfArrays.reduce((prevState, curState) =>
+  prevState.concat(curState)
+);
+console.log("arrayOfArrays:", arrayOfArrays);
+console.log("flattenArray:", flattenArray);
+
+console.log("--- count frequency ---");
+const valueAndFrequency = duplicateArray.reduce((prevState, curState) => {
+  if (curState in prevState) prevState[curState]++;
+  else prevState[curState] = 1;
+  return prevState;
+}, {});
+console.log("Duplicate array:", duplicateArray);
+console.log("Count frequency", valueAndFrequency);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
