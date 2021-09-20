@@ -51,7 +51,7 @@ console.log("nestedArray: ", nestedArray);
 console.log(`flattenArray: [ ${nestedArray.flat(Infinity).toString()} ]`);
 
 // --------------------------------------------------------------------------
-console.log("___________________ 2 ___________________");
+console.log("\n___________________ 2 ___________________");
 /**
  * [Creates a new array] by performing a function on each element
  * Does not work for array elements without values (undefined is a value too)
@@ -88,7 +88,7 @@ console.log(
 console.log("numValueArray (original Number()):", numStrArray.map(Number));
 
 // --------------------------------------------------------------------------
-console.log("___________________ 3 ___________________");
+console.log("\n___________________ 3 ___________________");
 /**
  * Expects a [synchronous function] -> does not wait for promises
  * Cannot terminate by any way but to throw an exception
@@ -108,8 +108,34 @@ function optimizedPrimeCheck(n) {
 console.log("--- filter test 1: get strings with length of 6 ---");
 const strLenOf6 = names.filter((name) => name.length == 6);
 console.log("Names with length of 6:", strLenOf6);
-console.log("--- filter test 2: get primes only from array ---");
-const testPrimeArray = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+console.log("\n--- filter test 2: get primes only from array ---");
+const testPrimeArray = [
+  -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+];
 const onlyPrime = testPrimeArray.filter(optimizedPrimeCheck);
 console.log("onlyPrime:", onlyPrime);
+
+console.log("\n# Cool stuff from 3");
+console.log("--- filter invalid entries from JSON ---");
+let testObjectsArray = [
+  { id: 15 },
+  { id: -1 },
+  { id: 0 },
+  { id: 3 },
+  { id: 12.2 },
+  {},
+  { id: null },
+  { id: NaN },
+  { id: "undefined" },
+];
+let invalidCount = 0;
+function getValidCountInvalid(item) {
+    if (Number.isFinite(item.id) && item.id !== 0) { return true; }
+    invalidCount++;
+    return false;
+}
+let filteredObjectsArray = testObjectsArray.filter(getValidCountInvalid);
+console.log('Original entries:', testObjectsArray);
+console.log('Valid objects:', filteredObjectsArray);
+console.log('Count invalid:', invalidCount);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
