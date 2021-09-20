@@ -309,4 +309,16 @@ console.log(
   testSomeArray1.find((num) => num % 2 != 0)
 );
 
+console.log(
+  "--- find test 2: find object by property using arrow func and destructuring ---"
+);
+const inventory = [
+  { name: "apples", quantity: 2 },
+  { name: "bananas", quantity: 0 },
+  { name: "cherries", quantity: 5 },
+];
+console.log("Inventory:", inventory);
+const objResult = inventory.find(({ name }) => name === "cherries");
+console.log("Cherries:", objResult);
+
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
