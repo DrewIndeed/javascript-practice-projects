@@ -4,8 +4,8 @@
  # 02. map: perform a function on each element + return new array
  # 03. filter: perform a function with A CONDITION on each element + return new array
  # 04. reduce: perform a function with A STATE AND ACTION on each element + return new STATE (a value, an array, an object, ...)
- # 05. every
- # 06. some
+ # 05. every: test if all elements passed a certain condition 
+ # 06. some: 
  # 07. find
  # 08. findIndex
  * 09. reduceRight
@@ -163,6 +163,7 @@ console.log("\n___________________ 4 ___________________");
  * Second call: initialValue will become the previous value of the array
  * Another cool stuff: running promises in sequence 
   -> Visit this link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#running_promises_in_sequence
+ * Return: A new array after done action/change state
  */
 console.log("--- reduce test 1: sum all numbers in an array ---");
 const sumOfArray = numbers.reduce(
@@ -250,4 +251,17 @@ console.log("\n--- can replace the combination of filter() and map() ---");
 console.log(
   `For example, you want to double only the positive integers in an array of integers. You might think of getting the positives using filter() and then double them using map() right?Reduce() can do that in one run`
 );
+
+// --------------------------------------------------------------------------
+console.log("\n___________________ 5 ___________________");
+/**
+ * Calling this method on an empty array will return true for any condition
+ * Does not mutate the array on which it is called
+ */
+console.log("--- every test 1: check if all values are even ---");
+console.log("Array 1:", [12, 5, 8, 130, 44]);
+console.log('Only even test result:',[12, 5, 8, 130, 44].every((x) => x % 2 == 0));
+console.log("Array 2:", [12, 54, 18, 130, 44]);
+console.log('Only even test result:',[12, 54, 18, 130, 44].every((x) => x % 2 == 0));
+
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
