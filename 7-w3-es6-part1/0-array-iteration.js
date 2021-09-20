@@ -370,7 +370,7 @@ console.log("Range(10, 20, 5):", range(10, 20, 5));
 
 // --------------------------------------------------------------------------
 console.log("\n___________________ 14 ___________________");
-console.log("\n--- keys test 1: basic ---");
+console.log("--- keys test 1: basic ---");
 const fruits2 = ["Banana", "Orange", "Apple", "Mango"];
 const keys = fruits2.keys();
 console.log("Keys type:", keys);
