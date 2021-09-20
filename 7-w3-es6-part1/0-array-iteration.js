@@ -3,7 +3,7 @@
  # 01. forEach: perform a function on each element
  # 02. map: perform a function on each element + return new array
  # 03. filter: perform a function with A CONDITION on each element + return new array
- # 04. reduce
+ # 04. reduce: perform a function with A STATE AND ACTION on each element + return new STATE (a value, an array, an object, ...)
  # 05. every
  # 06. some
  # 07. find
@@ -17,7 +17,7 @@
 */
 
 // test samples
-const numbers = [45, 1002, 9, 16, 25, 5, 123, 68, 20];
+const numbers = [45, 1002, 9, 16, 25, 5, 123, 68, 20]; // sum = 1313
 const names = ["Andrew", "John", "Phiphi", "Kevin", "Nathan", "Ericsson"];
 const obj = {
   Andrew: 45,
@@ -144,10 +144,29 @@ console.log("\n--- search a string in a strings array from a query string ---");
 let fruits = ["apple", "banana", "grapes", "mango", "orange"];
 console.log("All fruits:", fruits);
 function grabStringFromQuery(array, query) {
-  return array.filter((str) => str.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+  return array.filter(
+    (str) => str.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  );
 }
 console.log("Query for 'an':", grabStringFromQuery(fruits, "an"));
 console.log("Query for 'ap':", grabStringFromQuery(fruits, "ap"));
-console.log("Query for 'o':",grabStringFromQuery(fruits, "o"));
+console.log("Query for 'o':", grabStringFromQuery(fruits, "o"));
 
+// --------------------------------------------------------------------------
+console.log("\n___________________ 4 ___________________");
+/**
+ * Callback params: reducer((previousValue, currentValue, index, array), initialValue);
+ * First call: 
+    + Starting index: 1
+    + previousValue: the first value of the array if initialValue is no set
+ * Second call: initialValue will become the previous value of the array
+ */
+console.log("--- reduce test 1: sum all numbers in an array ---");
+const sumOfArray = numbers.reduce(
+  (previousValue, currentValue, index, array) => {
+    console.log(`${previousValue}\t+ ${currentValue}\t= ${previousValue + currentValue}`);
+    return previousValue + currentValue;
+  }
+);
+console.log("Sum of numbers array:", sumOfArray);
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
