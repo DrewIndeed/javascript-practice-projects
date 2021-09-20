@@ -211,7 +211,7 @@ const flattenArray = arrayOfArrays.reduce((prevState, curState) =>
 console.log("arrayOfArrays:", arrayOfArrays);
 console.log("flattenArray:", flattenArray);
 
-console.log("--- count frequency ---");
+console.log("\n--- count frequency ---");
 const valueAndFrequency = duplicateArray.reduce((prevState, curState) => {
   if (curState in prevState) prevState[curState]++;
   else prevState[curState] = 1;
@@ -219,4 +219,28 @@ const valueAndFrequency = duplicateArray.reduce((prevState, curState) => {
 }, {});
 console.log("Duplicate array:", duplicateArray);
 console.log("Count frequency", valueAndFrequency);
+
+console.log("\n--- group objects by key ---");
+let people = [
+  { name: "Jane", age: 21 },
+  { name: "Andrew", age: 21 },
+  { name: "Natalia", age: 23 },
+  { name: "Max", age: 20 },
+  { name: "Jane", age: 20 },
+  { name: "Andrew", age: 23 },
+  { name: "Huge", age: 50 },
+];
+function groupBy(targetGroup, property) {
+    return targetGroup.reduce((prevState, curValue) => {
+        let groupKey = curValue[property];
+        if (!prevState[groupKey]) {
+            prevState[groupKey] = []
+        }
+        prevState[groupKey].push(curValue);
+        return prevState;
+  }, {});
+}
+console.log("People:", people);
+console.log("Grouped by age", groupBy(people, 'age'))
+console.log("Grouped by name", groupBy(people, 'name'))
 console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n");
