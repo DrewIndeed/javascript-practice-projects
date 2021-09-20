@@ -7,13 +7,13 @@
  # 05. every: test if all elements passed a certain condition 
  # 06. some: test if at least one element passed a certain condition
  # 07. find: return the first value passed a certain condition
- # 08. findIndex
- * 09. reduceRight
- * 10. indexOf
- * 11. lastIndexOf
- * 12. includes
- * 13. from
- * 14. keys
+ # 08. findIndex: return the index of the first value passed certain condition
+ * 09. reduceRight: like reduce, but in the opposite direction
+ * 10. indexOf: returns the first index at which a given element can be found in the array, or -1 if it is not present.
+ * 11. lastIndexOf: returns the last index at which a given element can be found in the array, or -1 if it is not present.
+ * 12. includes:  determines whether an array includes a certain value among its entries; (value, fromIndex); fromIndex: -1, -100
+ # 13. from: creates a new, shallow-copied Array instance from an array-like or iterable object.
+ # 14. keys:
 */
 
 // test samples
@@ -252,8 +252,7 @@ console.log(
   `
   For example, you want to double only the positive integers in an array of integers.
   You might think of getting the positives using filter()and then double
-  them using map() right?Reduce() can do that in one run
-  `
+  them using map() right?Reduce() can do that in one run.`
 );
 
 // --------------------------------------------------------------------------
