@@ -11,7 +11,15 @@ const valueAndFrequency = duplicateArray.reduce((prevState, curState) => {
   return prevState;
 }, {});
 console.log(
+  "Non-unique elements:",
   Object.keys(valueAndFrequency).filter((key) => valueAndFrequency[key] > 1)
 );
 
 // ES6
+const filterNonUnique = (array) =>
+  Array.from(
+    new Set(
+      array.filter((item) => array.indexOf(item) !== array.lastIndexOf(item))
+    )
+  );
+console.log("Non-unique elements:", filterNonUnique(duplicateArray));
