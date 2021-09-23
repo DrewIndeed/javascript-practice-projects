@@ -19,4 +19,8 @@ const combiStringChar = (str) => {
   }
   return resultArray.slice(1).map((e) => e.join(""));
 };
-console.log(combiStringChar("dog"));
+// console.log(combiStringChar("dog"));
+
+
+const charInOrder = (str) => Array.from(str).sort().join('');
+console.log(charInOrder('webmaster'));
