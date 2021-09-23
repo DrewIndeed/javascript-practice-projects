@@ -30,3 +30,7 @@ const capitalized = (str) =>
     .map((s) => s.slice(0, 1).toUpperCase() + s.slice(1))
     .join(" ");
 // console.log(capitalized("andrew        le      nguyen"));
+
+const findLongestWord = (str) =>
+  str.split(/\s+/gi).sort((a, b) => b.length - a.length)[0];
+console.log(findLongestWord("Andrew Le Mollerstrom"));
