@@ -33,4 +33,10 @@ const capitalized = (str) =>
 
 const findLongestWord = (str) =>
   str.split(/\s+/gi).sort((a, b) => b.length - a.length)[0];
-console.log(findLongestWord("Andrew Le Mollerstrom"));
+// console.log(findLongestWord("Andrew Le Mollerstrom"));
+
+const countVowels = (str) =>
+  Array.from(str.replace(/\s+/gi, "")).filter((chr) =>
+    ["u", "e", "o", "a", "i"].includes(chr.toLowerCase())
+  ).length;
+console.log(countVowels("The quick brown fox"));
