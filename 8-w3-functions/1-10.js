@@ -39,4 +39,19 @@ const countVowels = (str) =>
   Array.from(str.replace(/\s+/gi, "")).filter((chr) =>
     ["u", "e", "o", "a", "i"].includes(chr.toLowerCase())
   ).length;
-console.log(countVowels("The quick brown fox"));
+// console.log(countVowels("The quick brown fox"));
+
+const isPrime = (num) => {
+  if (num < 5) return num == 2 || num == 3;
+  if (num % 2 == 0 || num % 3 == 0) return false;
+  let i = 5;
+  while (i * i <= num) {
+    if (num % i == 0 || num % (i + 2) == 0) return false;
+    i += 6;
+  }
+  return true;
+};
+console.log(isPrime(2));
+console.log(isPrime(3));
+console.log(isPrime(13));
+console.log(isPrime(99));
