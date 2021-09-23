@@ -21,6 +21,12 @@ const combiStringChar = (str) => {
 };
 // console.log(combiStringChar("dog"));
 
+const charInOrder = (str) => Array.from(str).sort().join("");
+// console.log(charInOrder('webmaster'));
 
-const charInOrder = (str) => Array.from(str).sort().join('');
-console.log(charInOrder('webmaster'));
+const capitalized = (str) =>
+  str
+    .split(/\s+/gi)
+    .map((s) => s.slice(0, 1).toUpperCase() + s.slice(1))
+    .join(" ");
+// console.log(capitalized("andrew        le      nguyen"));
