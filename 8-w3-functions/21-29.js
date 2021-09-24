@@ -51,5 +51,15 @@ const longest_substring_without_repeating_characters = (str) => {
   return rs.sort((a, b) => b.length - a.length)[0].join("");
 };
 
-console.log(longest_substring_without_repeating_characters("google.com"));
-console.log(longest_substring_without_repeating_characters("example.com"));
+// console.log(longest_substring_without_repeating_characters("google.com"));
+// console.log(longest_substring_without_repeating_characters("example.com"));
+
+
+
+
+// exclude 28
+
+function printFunctionName() {
+  console.log(arguments.callee.name + "()");
+}
+printFunctionName();
