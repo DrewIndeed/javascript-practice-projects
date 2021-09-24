@@ -51,7 +51,26 @@ const isPrime = (num) => {
   }
   return true;
 };
-console.log(isPrime(2));
-console.log(isPrime(3));
-console.log(isPrime(13));
-console.log(isPrime(99));
+// console.log(isPrime(2));
+// console.log(isPrime(3));
+// console.log(isPrime(13));
+// console.log(isPrime(99));
+
+// exclude exercise 9
+
+const createIdentityMatrix = (num) => {
+  let markIndex = 0;
+  let resultArray = [];
+  for (let i = 0; i < num; i++) {
+    let temp = [];
+    for (let j = 0; j < num; j++) {
+      if (j == markIndex) temp.push(1);
+      else temp.push(0);
+    }
+    resultArray.push(temp);
+    markIndex++;
+  }
+  return resultArray;
+};
+
+for (const item of createIdentityMatrix(5)) console.log(item);
