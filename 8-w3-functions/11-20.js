@@ -38,3 +38,14 @@ const pow = (base, expo) => {
 };
 // console.log(pow(2, 3));
 
+// exclude 16
+
+const occurrenceEachChar = (str) => {
+  let frequency = {};
+  for (const char of Array.from(str)) {
+    if (!frequency[char]) frequency[char] = 1;
+    else frequency[char]++;
+  }
+  return frequency;
+};
+console.log(occurrenceEachChar("asfhlkjjlerjlkzzzjldsj"));
