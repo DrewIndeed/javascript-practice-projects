@@ -48,4 +48,29 @@ const occurrenceEachChar = (str) => {
   }
   return frequency;
 };
-console.log(occurrenceEachChar("asfhlkjjlerjlkzzzjldsj"));
+// console.log(occurrenceEachChar("asfhlkjjlerjlkzzzjldsj"));
+
+const binarySearch = (arr, element) => {
+  /**
+  * Sort array
+  * Create flag 1 starts from first index, flag 2 starts from last index
+  * Keep looping until 2 flags meet
+    Create flag 3 to represent middle point = (int) (start + end / 2)
+    if array[flag 3] === element -> found -> return true
+    else if array[flag 3] < element -> it is in the 2nd half -> start = mid + 1
+    else if array[flag 3] > element -> it is in the 1st half -> end = mid - 1
+  * If after check there is nothing, it is not in the array -> return false
+  */
+//   arr = arr.sort((a, b) => a - b);
+  let start = 0;
+  let end = arr.length - 1;
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    if (arr[mid] === element) return mid;
+    else if (arr[mid] < element) start = mid + 1;
+    else end = mid - 1;
+  }
+  return false;
+};
+
+console.log(binarySearch([9, 2, 6, 1, 8, 33, 25, 146, 5, 4, 1, 2, 1000, 8], 1000));
