@@ -27,3 +27,14 @@ const isPerfectNumber = (num) => {
 // console.log(isPerfectNumber(496)); // true
 // console.log(isPerfectNumber(8128)); // true
 // console.log(isPerfectNumber(99)); // false
+
+// exercise 13 is within 12 so will be excluded
+// exclude 14
+
+const pow = (base, expo) => {
+  let result = 1;
+  for (let i = 0; i < expo; i++) result *= base;
+  return result;
+};
+// console.log(pow(2, 3));
+
