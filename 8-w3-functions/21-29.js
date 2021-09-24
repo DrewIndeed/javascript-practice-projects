@@ -53,13 +53,46 @@ const longest_substring_without_repeating_characters = (str) => {
 
 // console.log(longest_substring_without_repeating_characters("google.com"));
 // console.log(longest_substring_without_repeating_characters("example.com"));
+const isPalindrome = (str) => {
+  let strarr = Array.from(str).map((ch) => ch.toLowerCase());
+  let start = 0;
+  let end = strarr.length - 1;
+  for (let i = 0; i < Math.floor(strarr.length / 2); i++) {
+    if (strarr[start] !== strarr[end]) return false;
+    start++;
+    end--;
+  }
+  return true;
+};
 
+const longestPalindrome = (str) => {
+  const strarr = Array.from(str);
+  let all = [];
+  for (let i = 0; i < strarr.length; i++) {
+    let temp = [];
+    temp.push(strarr[i]);
+    for (let j = i + 1; j < strarr.length; j++) {
+      if (strarr[i] != strarr[j]) temp.push(strarr[j]);
+      else {
+        temp.push(strarr[j]);
+        all.push(temp);
+        temp = [];
+      }
+    }
+  }
+  return all
+    .filter((p) => isPalindrome(p.join("")))
+    .sort((a, b) => b.length - a.length)[0]
+    .join("");
+};
 
-
-
+console.log(longestPalindrome("abracadabra"));
+console.log(
+  longestPalindrome("HYTBCABADEFGHABCDEDCBAGHTFYW12345678987654321ZWETYGDE")
+);
 // exclude 28
 
 function printFunctionName() {
   console.log(arguments.callee.name + "()");
 }
-printFunctionName();
+// printFunctionName();
