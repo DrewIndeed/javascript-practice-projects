@@ -11,4 +11,12 @@ const allCombiFromArrays = (arr, len) => {
   return result.filter((a) => a.length == len);
 };
 
-console.log(allCombiFromArrays([1, 2, 3], 2));
+// console.log(allCombiFromArrays([1, 2, 3], 2));
+
+// exclude 22
+
+const firstUniqueChar = (str) =>
+  Array.from(new Set(Array.from(str))).filter(
+    (c) => Array.from(str).indexOf(c) === Array.from(str).lastIndexOf(c)
+  )[0];
+console.log(firstUniqueChar("abacdffpffzzzzdbc"));
