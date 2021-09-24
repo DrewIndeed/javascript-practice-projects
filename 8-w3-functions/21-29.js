@@ -32,4 +32,24 @@ const bubbleSort = (arr) => {
   }
   return arr;
 };
-console.log(bubbleSort([9, 2, 6, 1, 8, 33, 25, 146, 5, 4, 1, 2, 1000, 8]));
+// console.log(bubbleSort([9, 2, 6, 1, 8, 33, 25, 146, 5, 4, 1, 2, 1000, 8]));
+
+// exclude 25
+
+const longest_substring_without_repeating_characters = (str) => {
+  let toArray = Array.from(str);
+  let rs = [];
+  for (let i = 0; i < toArray.length; i++) {
+    let temp = [];
+    temp.push(toArray[i]);
+    for (let j = i + 1; j < toArray.length; j++) {
+      if (toArray[i] !== toArray[j]) temp.push(toArray[j]);
+      else break;
+    }
+    rs.push(temp);
+  }
+  return rs.sort((a, b) => b.length - a.length)[0].join("");
+};
+
+console.log(longest_substring_without_repeating_characters("google.com"));
+console.log(longest_substring_without_repeating_characters("example.com"));
