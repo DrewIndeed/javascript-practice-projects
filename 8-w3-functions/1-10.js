@@ -1,10 +1,14 @@
-const reverseString = (str) => Array.from(str).reverse().join("");
-// console.log(reverseString("Andrew"));
-
-const isPalindrome = (str) =>
-  reverseString(str)
-    .toLowerCase()
-    .replace(/[^a-z]/gi, "") === str.toLowerCase().replace(/[^a-z]/gi, "");
+const isPalindrome = (str) => {
+  let strarr = Array.from(str).map((ch) => ch.toLowerCase());
+  let start = 0;
+  let end = strarr.length - 1;
+  for (let i = 0; i < Math.floor(strarr.length / 2); i++) {
+    if (strarr[start] !== strarr[end]) return false;
+    start++;
+    end--;
+  }
+  return true;
+};
 // console.log(isPalindrome("madam"));
 // console.log(isPalindrome("Andrew Le Nguyen"));
 // console.log(isPalindrome("A dog! A panic in a pagoda."));
