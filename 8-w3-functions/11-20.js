@@ -61,7 +61,6 @@ const binarySearch = (arr, element) => {
     else if array[flag 3] > element -> it is in the 1st half -> end = mid - 1
   * If after check there is nothing, it is not in the array -> return false
   */
-//   arr = arr.sort((a, b) => a - b);
   let start = 0;
   let end = arr.length - 1;
   while (start <= end) {
@@ -73,4 +72,20 @@ const binarySearch = (arr, element) => {
   return false;
 };
 
-console.log(binarySearch([9, 2, 6, 1, 8, 33, 25, 146, 5, 4, 1, 2, 1000, 8], 1000));
+// console.log(
+//   binarySearch([9, 2, 6, 1, 8, 33, 25, 146, 5, 4, 1, 2, 1000, 8], 1000)
+// );
+
+const createIdOfLength = (len) => {
+  const sample =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = [];
+  for (let i = 0; i < len; i++) {
+    result.push(
+      Array.from(sample)[Math.floor(Math.random() * (sample.length - 1))]
+    );
+  }
+  return result.join("");
+};
+
+console.log(createIdOfLength(8));
