@@ -5,7 +5,13 @@
 */
 
 // without explainations
-const powersetnoexplain = (arr) => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
+const powersetnoexplain = (arr) => arr.reduce(
+    (a, v) => a.concat(
+        a.map(
+            r => [v].concat(r)
+        )
+    )
+, [[]]);
 
 // with explainations
 const powerset =

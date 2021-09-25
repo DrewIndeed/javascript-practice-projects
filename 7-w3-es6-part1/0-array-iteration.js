@@ -13,7 +13,7 @@
  * 11. lastIndexOf: returns the last index at which a given element can be found in the array, or -1 if it is not present.
  * 12. includes:  determines whether an array includes a certain value among its entries; (value, fromIndex); fromIndex: -1, -100
  # 13. from: creates a new, shallow-copied Array instance from an array-like or iterable object.
- # 14. keys: creates an Array Interator object, containing the keys of the array
+ # 14. keys: creates an Array Iterator object, containing the keys of the array
 */
 
 // test samples
