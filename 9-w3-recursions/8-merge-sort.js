@@ -27,4 +27,21 @@ function mergeSort(arr) {
   return mergeParts(leftPart, rightPart);
 }
 
-console.log("Result:", mergeSort(testArray));
+console.log("Result 1:", mergeSort(testArray));
+
+Array.prototype.merge_sort = function () {
+  if (this.length <= 1) return this;
+  let halfIndex = parseInt(this.length / 2);
+  let leftPart = this.slice(0, halfIndex).merge_sort();
+  let rightPart = this.slice(halfIndex, this.length).merge_sort();
+  const mergeParts = (arr1, arr2) => {
+    let result = [];
+    while (arr1.length > 0 && arr2.length > 0) {
+      result.push(arr1[0] <= arr2[0] ? arr1.shift() : arr2.shift());
+    }
+    return result.concat(arr1).concat(arr2);
+  };
+  return mergeParts(leftPart, rightPart);
+};
+
+console.log("Result 2:", testArray.merge_sort());
