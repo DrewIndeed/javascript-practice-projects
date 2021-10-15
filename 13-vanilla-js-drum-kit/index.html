@@ -59,7 +59,22 @@
 
     <script>
         window.addEventListener('keydown', function (e) {
+            // get current hitting key
             const hittingkey = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+            // get according audio of that key
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            
+            // if there is no such key
+            if (!audio) return;
+
+            // rewind every time we hit the key
+            audio.currentTime = 0;
+
+            // play the sound
+            audio.play();
+
+            // addling 
             hittingkey.classList.add('playing');
         })
     </script>
