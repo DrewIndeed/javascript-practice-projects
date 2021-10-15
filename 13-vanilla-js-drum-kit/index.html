@@ -58,13 +58,13 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
-        function playsound (e) {
+        function playsound(e) {
             // get current hitting key
             const hittingkey = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
             // get according audio of that key
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-            
+
             // if there is no such key
             if (!audio) return;
 
@@ -77,6 +77,26 @@
             // addling 
             hittingkey.classList.add('playing');
         }
+
+        function removeTransition(e) {
+            // skip it if it is not a transform event
+            if (e.propertyName !== 'transform') return;
+
+            // if it is, remove the transform event
+            // print out to see what is "this"
+            // console.log(this);
+            // "this" is the html element that caused the event
+            this.classList.remove('playing');
+        }
+
+
+        // get all keys
+        const allkeys = document.querySelectorAll('.key');
+
+        // handle styling when the audio finished playing
+        allkeys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+        // listen for key hitting events
         window.addEventListener('keydown', playsound)
     </script>
 </body>
