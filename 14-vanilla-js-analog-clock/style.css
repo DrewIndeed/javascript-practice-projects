@@ -19,15 +19,54 @@
 	aspect-ratio: 1 / 1;
   border: 5px double cyan;
 	border-radius: 50%;
+	transition: all 0.5s;
 }
 
 .clock-center {
-	width: 10px;
+	width: 15px;
 	aspect-ratio: 1 / 1;
   border: 5px double cyan;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	transition: all 0.5s;
 	border-radius: 50%;
+}
+
+.clock-face:hover {
+	border: 5px double orange;
+}
+
+.clock-face:hover .clock-center{
+	border: 5px double orange;
+}
+
+.hand {
+	border: none;
+	border-radius: 0;
+	height: 2px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transform-origin: 0% -50%;
+}
+
+.hour-hand {
+	width: 10%;
+	background-color: red;
+	transform: rotate(-90deg);
+}
+
+.minute-hand {
+	width: 18%;
+	background-color: yellow;
+	transform: rotate(-90deg);
+}
+
+.second-hand {
+	width: 22%;
+	background-color: rgb(155, 235, 34);
+	transform: rotate(-90deg);
 }
