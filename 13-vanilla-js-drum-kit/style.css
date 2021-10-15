@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.keys {
+	height: 100vh;
+	background: url('https://mocah.org/uploads/posts/545908-audience-band.jpg');
+	background-repeat: none;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	opacity: 0.8;
+}
