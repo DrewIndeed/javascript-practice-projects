@@ -20,9 +20,9 @@
 .clock-face {
   width: 46%;
   aspect-ratio: 1 / 1;
-  border: 15px double cyan;
+  border: 12px double cyan;
   border-radius: 50%;
-  transition: all 0.5s;
+  /* transition: all 0.5s; */
 }
 
 .clock-center {

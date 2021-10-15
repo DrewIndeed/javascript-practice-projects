@@ -23,7 +23,7 @@
         const allHands = document.getElementsByClassName("hand");
 
         let globalSec = new Date().getSeconds().toLocaleString().valueOf();
-        let globalSecDisplay = ((globalSec / 60) * 360);
+        let globalSecDisplay = ((globalSec / 60) * 360) - 90 + 6;
         allHands[0].style.transform = `rotate(${globalSecDisplay}deg)`;
 
         let globalMin = new Date().getMinutes().toLocaleString().valueOf();
@@ -33,26 +33,23 @@
         let globalHr = new Date().getHours().toLocaleString().valueOf();
         let globalHrDisplay = ((globalHr / 12) * 360) - 90;
         allHands[2].style.transform = `rotate(${globalHrDisplay}deg)`;
-        console.log(globalHr);
-        console.log(globalHrDisplay);
 
         setInterval(() => {
             globalSec = new Date().getSeconds().toLocaleString().valueOf();
-            globalSecDisplay = ((globalSec / 60) * 360);
+            if (globalSec === '0') {
+                globalMin = new Date().getMinutes().toLocaleString().valueOf();
+                if (globalMin === '0') {
+                    globalHr = new Date().getHours().toLocaleString().valueOf();
+                    globalHrDisplay = ((globalHr / 12) * 360) - 90;
+                    allHands[2].style.transform = `rotate(${globalHrDisplay}deg)`;
+                }
+                globalMinDisplay = ((globalMin / 60) * 360) - 90;
+                allHands[1].style.transform = `rotate(${globalMinDisplay}deg)`;
+            }
+            globalSecDisplay = ((globalSec / 60) * 360) - 90 + 6;
             allHands[0].style.transform = `rotate(${globalSecDisplay}deg)`;
         }, 1000);
 
-        setInterval(() => {
-            globalMin = new Date().getMinutes().toLocaleString().valueOf();
-            globalMinDisplay = ((globalMin / 60) * 360) - 90;
-            allHands[1].style.transform = `rotate(${globalMinDisplay}deg)`;
-        }, 1000 * 60);
-
-        setInterval(() => {
-            globalHr = new Date().getHours().toLocaleString().valueOf();
-            globalHrDisplay = ((globalHr / 24) * 360) - 90;
-            allHands[2].style.transform = `rotate(${globalHrDisplay}deg)`;
-        }, 1000 * 60 * 60);
     </script>
 </body>
 
