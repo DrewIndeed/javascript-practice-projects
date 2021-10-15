@@ -35,38 +35,35 @@
 }
 
 .clock-face:hover {
-	border: 5px double orange;
+	border: 5px double rgb(255, 179, 39);
 }
 
 .clock-face:hover .clock-center{
-	border: 5px double orange;
+	border: 5px double rgb(255, 179, 39);
 }
 
 .hand {
 	border: none;
 	border-radius: 0;
-	height: 2px;
+	height: 6px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	transform-origin: 0% -50%;
+	transform-origin: 0;
+	transform: rotate(-90deg);
 }
 
 .hour-hand {
 	width: 10%;
-	background-color: red;
-	transform: rotate(-90deg);
+	background-color: rgb(254, 49, 49);
 }
 
 .minute-hand {
-	width: 18%;
+	width: 17%;
 	background-color: yellow;
-	transform: rotate(-90deg);
 }
 
 .second-hand {
 	width: 22%;
 	background-color: rgb(155, 235, 34);
-	transform: rotate(-90deg);
 }
