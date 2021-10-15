@@ -33,7 +33,7 @@
 
 .key kbd {
 	color: #fce856;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .key:hover {
@@ -43,4 +43,11 @@
 .sound {
 	text-transform: uppercase;
 	color: #fce856;
+}
+
+.playing {
+	transform: scale(1.1);
+	background-color: rgba(3, 3, 29, 1);
+	opacity: 1;
+	box-shadow: 0 0 30px #fce856;
 }
