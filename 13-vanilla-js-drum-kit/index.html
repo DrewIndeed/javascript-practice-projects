@@ -58,7 +58,7 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
-        window.addEventListener('keydown', function (e) {
+        function playsound (e) {
             // get current hitting key
             const hittingkey = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
@@ -76,7 +76,8 @@
 
             // addling 
             hittingkey.classList.add('playing');
-        })
+        }
+        window.addEventListener('keydown', playsound)
     </script>
 </body>
 
