@@ -62,7 +62,27 @@
     </style>
 
     <script>
-        
+        // get all input elements
+        const inputs = document.querySelectorAll('.controls input');
+        // console.log(inputs);
+
+        function handleChange(e) {
+            // Trying to understand what is THIS
+            // console.log("Using this", this.dataset);
+            // console.log("Using target", e.target.dataset);
+            // -> SO, THIS = E.TARGET
+
+            const suffix = this.dataset.sizing || '';
+
+            // Trying to understand what is documentElement
+            // console.log(document.documentElement);
+            // -> SO, it is the tree of HTML and the stylr below is a tag
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        // add event listeners to catch events
+        inputs.forEach(ip => ip.addEventListener('change', handleChange));
+        inputs.forEach(ip => ip.addEventListener('mousemove', handleChange));
     </script>
 
 </body>
