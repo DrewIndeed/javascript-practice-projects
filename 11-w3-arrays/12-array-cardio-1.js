@@ -84,11 +84,27 @@ console.table(rs3);
 // 4. How many years did all the inventors live all together?
 console.log("4 - Sum of all years they live");
 let rs4 = inventors.reduce(
-  (sum, inventor) => sum + (inventor.passed - inventor.year), 0
+  (sum, inventor) => sum + (inventor.passed - inventor.year),
+  0
 );
 console.log(rs4);
 
 // 5. Sort the inventors by years lived
+console.log("5 - Sort by years they live");
+// way 1 to add another key-value pair to an object
+// let withYearsLived = inventors.map((inventor) =>
+//   Object.assign(inventor, { totalyears: inventor.passed - inventor.year })
+// );
+
+// way 2 to add another key-value pair to an object, fastest way
+let withYearsLived = inventors.map((inventor) => {
+  inventor.totalyears = inventor.passed - inventor.year;
+  return inventor;
+});
+let rs5 = withYearsLived.sort(
+  (a, b) => b.passed - b.year - (a.passed - a.year)
+);
+console.table(rs5);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
