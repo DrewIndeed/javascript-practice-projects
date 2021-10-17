@@ -150,11 +150,21 @@ const blvNames = [
   "Boulevard Voltaire",
   "Boulevard de la Zone",
 ];
-let rs6 = blvNames.filter(name => name.includes("de"));
+let rs6 = blvNames.filter((name) => name.includes("de"));
 console.log(rs6);
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+console.log("7 - Sort the people by last name");
+// Use this to compare to the correct result
+// const alpha = people.sort((lastOne, nextOne) => {
+//   const [aLast, aFirst] = lastOne.split(", ");
+//   const [bLast, bFirst] = nextOne.split(", ");
+//   return aLast > bLast ? 1 : -1;
+// });
+// console.log(alpha);
+let rs7 = people.sort((a, b) => a.split(", ")[0] - b.split(", ")[0]);
+console.log(rs7);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
