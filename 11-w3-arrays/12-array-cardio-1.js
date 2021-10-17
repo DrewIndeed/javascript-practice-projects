@@ -168,6 +168,7 @@ console.log(rs7);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
+console.log("8 - Sum of each data object");
 const data = [
   "car",
   "car",
@@ -184,3 +185,9 @@ const data = [
   "car",
   "truck",
 ];
+let rs8 = data.reduce((sum, item) => {
+  if (!sum[item]) sum[item] = 1;
+  else sum[item] += 1;
+  return sum;
+}, {});
+console.log(rs8);
