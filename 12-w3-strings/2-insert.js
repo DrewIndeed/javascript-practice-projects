@@ -1,3 +1,4 @@
+// Write a JavaScript function to insert a string within a string at a particular position (default is 0)
 const insert = (org, tar = "", index = 0) => {
   if (tar === "") return org;
   if (index === 0) return tar + org;
