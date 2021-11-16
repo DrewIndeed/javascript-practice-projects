@@ -123,7 +123,7 @@ const createUser = (username, email, password) => {
 
   // return message if already exists
   if (usernameAlreadyExist) {
-    console.log(`Username '${username}' has been already used!`);
+    console.log(`'${username}' has been already used!`);
     return;
   }
 
@@ -132,7 +132,7 @@ const createUser = (username, email, password) => {
 
   // return message if already exists
   if (emailAlreadyExist) {
-    console.log(`Email '${email}' has been already used!`);
+    console.log(`'${email}' has been already used!`);
     return;
   }
 
@@ -231,7 +231,13 @@ const getAverageRating = (product) => {
 /*
  * Method to like a product
  */
-const likeProduct = (product, user) => {
+const likeProduct = (productId, username) => {
+  // get user by username
+  const user = getUserByUsername(username);
+
+  // get product by id
+  const product = getProductById(productId);
+
   // prevent liking if user is not logged in
   if (!user.isLoggedIn) {
     console.log("Please log in before liking!");
@@ -240,9 +246,14 @@ const likeProduct = (product, user) => {
 
   // check if user already liked the product
   const userAlreadyLiked = product.likes.some((userId) => userId === user._id);
-  if (!userAlreadyLiked) product.likes.push(user._id);
-  else product.likes = product.likes.filter((userId) => userId !== user._id);
-  console.log(product.likes);
+  if (!userAlreadyLiked) {
+    product.likes.push(user._id);
+    console.log(`'${username}' liked '${product.description}'`)
+  }
+  else {
+    product.likes = product.likes.filter((userId) => userId !== user._id);
+    console.log(`'${username}' unliked '${product.description}'`)
+  }
 };
 
 // ? Small tesing
@@ -252,7 +263,31 @@ const likeProduct = (product, user) => {
 // likeProduct(products[2], users[1]);
 // likeProduct(products[2], users[1]);
 
+/*
+* Getting objects from database based in params
+*/
+const getProductById = (productId) => {
+  return (
+    products.filter((pd) => pd._id === productId)[0] ||
+    "Product ID does not exist!"
+  );
+};
+
+const getUserByUsername = (username) => {
+  return (
+    users.filter((user) => user.username === username)[0] ||
+    "Username does not exist!"
+  );
+};
+
+const getUserByEmail = (email) => {
+  return (
+    users.filter((user) => user.email === email)[0] || "Email does not exist!"
+  );
+};
+
 const main = () => {
+  console.log("CREATING USERS");
   // * signing up users (valid)
   createUser("Andrew1", "andrew1@com", "1234");
   createUser("Andrew2", "andrew2@com", "2345");
@@ -260,11 +295,22 @@ const main = () => {
   // * signing up users (invalid)
   createUser("Andrew4", "alex@alex.com", "1234");
   createUser("Andrew1", "andrew4@com", "1234");
+  console.log();
 
+  console.log("SIGNING IN SOME USERS");
   // * signing in valid users (valid)
   console.log(signIn("andrew1@com", "1234"));
   console.log(signIn("andrew2@com", "2345"));
   // * signing in valid users (valid)
   console.log(signIn("andrew4@com", "3456"));
+  console.log();
+
+  console.log("LIKING SOME PRODUCTS");
+  // * liking products
+  likeProduct("eedfcf", "Andrew1");
+  likeProduct("aegfal", "Andrew2");
+  likeProduct("eedfcf", "Andrew3");
+  likeProduct("eedfcf", "Andrew1");
+  console.log();
 };
 main();
