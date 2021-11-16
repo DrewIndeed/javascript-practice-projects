@@ -72,18 +72,37 @@ const products = [
 ];
 
 /*
-	Imagine you are getting the above users collection from a MongoDB database. 
+	1/ Imagine you are getting the above users collection from a MongoDB database. 
 	a. Create a function called signUp which allows user to add to the collection. 
 		If user exists, inform the user that he has already an account.
-	b. Create a function called signIn which allows user to sign in to the application
+	b. Create a function called signIn which allows user to sign in 
+		to the application
 
-	The products array has three elements and each of them has six properties. 
+	2/ The products array has three elements and each of them has six properties. 
 	a. Create a function called rateProduct which rates the product 
 	b. Create a function called averageRating which 
 		calculate the average rating of a product
 
-	Create a function called likeProduct. 
+	3/ Create a function called likeProduct. 
 	This function will helps to like to the product if it is not liked 
 	and remove like if it was liked.
 */
 
+/*
+ * Method to generate an id for the user when signed up
+ */
+const generateSimpleUserId = (length) => {
+  // all characters used to generate id
+  const characters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+  // result container string
+  let randomId = "";
+
+  // concatenate random characters in to result container string
+  for (let i = 0; i < length; i++)
+    randomId += characters[Math.floor(Math.random() * (characters.length - 1))];
+
+  // return result container string
+  return randomId;
+};
