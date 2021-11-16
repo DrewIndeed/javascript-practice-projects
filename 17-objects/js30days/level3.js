@@ -80,10 +80,10 @@ let products = [
 	2/ The products array has three elements and each of them has six properties. 
 	a. Create a function called rateProduct which rates the product ✅
 	b. Create a function called averageRating which 
-		calculate the average rating of a product
+		calculate the average rating of a product ✅
 
 	3/ Create a function called likeProduct. 
-	This function will helps to like to the product if it is not liked 
+	This function will help to like to the product if it is not liked 
 	and remove like if it was liked.
 */
 
@@ -197,9 +197,35 @@ const rateProduct = (product, user, rating) => {
  */
 const getAverageRating = (product) => {
   const allRatings = product.ratings;
-  return allRatings.reduce((sumRating, rating) => {
-    sumRating += rating.rate;
-    return sumRating;
-  }, 0) / allRatings.length;
+  return (
+    allRatings.reduce((sumRating, rating) => {
+      sumRating += rating.rate;
+      return sumRating;
+    }, 0) / allRatings.length
+  );
 };
 // console.log(getAverageRating(products[0]));
+
+/*
+ * Method to like a product
+ */
+const likeProduct = (product, user) => {
+  // prevent liking if user is not logged in
+  if (!user.isLoggedIn) {
+    console.log("Please log in before liking!");
+    return;
+  }
+
+  // check if user already liked the product
+  const userAlreadyLiked = product.likes.some((userId) => userId === user._id);
+  if (!userAlreadyLiked) product.likes.push(user._id);
+  else product.likes = product.likes.filter((userId) => userId !== user._id);
+  console.log(product.likes);
+};
+
+// ? Small tesing
+// likeProduct(products[2], users[0]);
+// console.log(signIn(users[0]));
+// likeProduct(products[2], users[0]);
+// likeProduct(products[2], users[1]);
+// likeProduct(products[2], users[1]);
