@@ -87,3 +87,15 @@ const isMERN = (obj) => {
 };
 const rs3 = Object.entries(users).filter((item) => isMERN(item)).length;
 console.log(rs3);
+
+// Set your name in the users object without modifying the original users Object
+let copyOfUsers = Object.assign({}, users);
+copyOfUsers.Andrew = {
+  email: "andrew@andrew.com",
+  skills: ["HTML", "CSS", "JavaScript", "React", "Redux"],
+  age: 20,
+  isLoggedIn: false,
+  points: 100,
+};
+console.table(copyOfUsers);
+console.log(copyOfUsers.Andrew);
