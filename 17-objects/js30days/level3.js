@@ -1,4 +1,4 @@
-const users = [
+let users = [
   {
     _id: "ab12ex",
     username: "Alex",
@@ -41,7 +41,7 @@ const users = [
   },
 ];
 
-const products = [
+let products = [
   {
     _id: "eedfcf",
     name: "mobile phone",
@@ -91,7 +91,7 @@ const products = [
 /*
  * Method to generate an id for the user when signed up
  */
-const generateSimpleUserId = (length) => {
+const getSimpleUserId = (length) => {
   // all characters used to generate id
   const characters =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -105,4 +105,42 @@ const generateSimpleUserId = (length) => {
 
   // return result container string
   return randomId;
+};
+
+/*
+ * Method to get data from form (for example) and create a user profile
+ * Format: {
+ *  _id: "fg12cy",
+ *  username: "Asab",
+ *  email: "asab@asab.com",
+ *  password: "123456",
+ *  createdAt: "08/01/2020 9:30 AM",
+ *  isLoggedIn: true,
+ * }
+ */
+const createUser = (username, email, password) => {
+  // check if user already exists in database by comparing emails
+  const alreadyExistInDatabase = users.some((user) => user.email === email);
+
+  // return message if alraeady exists
+  if (alreadyExistInDatabase) return `Email '${email}' has been already used!`;
+
+  // if not exist, create new user
+  const newUserProfile = {
+    _id: getSimpleUserId(6),
+    username: username,
+    email: email,
+    password: password,
+    createdAt: new Date().toLocaleString(),
+    isLoggedIn: false,
+  };
+
+  // add user to database
+  users.push(newUserProfile);
+
+  // print out messages
+  console.log("Updated users database. Showing last three profiles...");
+
+  // print out the last 3 users in the database
+  console.log(users.slice(users.length - 3, users.length));
 };
