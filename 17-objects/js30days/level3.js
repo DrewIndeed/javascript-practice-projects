@@ -165,7 +165,8 @@ const signIn = (user) => {
 /*
  * Method for user to rate a product
  * Assuming that:
- * 	+ When the same user rates again, new rating will be created, instead of updating existing rating.
+ * 	+ When the same user rates again, new rating will be created,
+ *    instead of updating existing rating.
  * 	+ Rating are in range from 0 to 5;
  *  + Rating product is always existing -> found
  *  + User's id is valid -> exist
@@ -190,3 +191,15 @@ const rateProduct = (product, user, rating) => {
 // rateProduct(products[2], users[0], 5);
 // console.log(signIn(users[0]));
 // rateProduct(products[2], users[0], 5);
+
+/*
+ * Method to calculate product's average rating
+ */
+const getAverageRating = (product) => {
+  const allRatings = product.ratings;
+  return allRatings.reduce((sumRating, rating) => {
+    sumRating += rating.rate;
+    return sumRating;
+  }, 0) / allRatings.length;
+};
+// console.log(getAverageRating(products[0]));
