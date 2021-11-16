@@ -193,7 +193,13 @@ const signIn = (email, password) => {
  *  + Rating product is always existing -> found
  *  + User's id is valid -> exist
  */
-const rateProduct = (product, user, rating) => {
+const rateProduct = (productId, username, rating) => {
+  // get user by username
+  const user = getUserByUsername(username);
+
+  // get product by id
+  const product = getProductById(productId);
+
   // prevent rating if user is not logged in
   if (!user.isLoggedIn) {
     console.log("Please log in before rating!");
@@ -217,7 +223,8 @@ const rateProduct = (product, user, rating) => {
 /*
  * Method to calculate product's average rating
  */
-const getAverageRating = (product) => {
+const getAverageRating = (productId) => {
+  const product = getProductById(productId);
   const allRatings = product.ratings;
   return (
     allRatings.reduce((sumRating, rating) => {
@@ -248,11 +255,10 @@ const likeProduct = (productId, username) => {
   const userAlreadyLiked = product.likes.some((userId) => userId === user._id);
   if (!userAlreadyLiked) {
     product.likes.push(user._id);
-    console.log(`'${username}' liked '${product.description}'`)
-  }
-  else {
+    console.log(`'${username}' liked '${product.description}'`);
+  } else {
     product.likes = product.likes.filter((userId) => userId !== user._id);
-    console.log(`'${username}' unliked '${product.description}'`)
+    console.log(`'${username}' unliked '${product.description}'`);
   }
 };
 
@@ -264,8 +270,8 @@ const likeProduct = (productId, username) => {
 // likeProduct(products[2], users[1]);
 
 /*
-* Getting objects from database based in params
-*/
+ * Getting objects from database based in params
+ */
 const getProductById = (productId) => {
   return (
     products.filter((pd) => pd._id === productId)[0] ||
@@ -311,6 +317,14 @@ const main = () => {
   likeProduct("aegfal", "Andrew2");
   likeProduct("eedfcf", "Andrew3");
   likeProduct("eedfcf", "Andrew1");
+  console.log();
+
+  console.log("RATING SOME PRODUCTS");
+  rateProduct("eedfcf", "Andrew1", 5);
+  console.log("Average rating:", getAverageRating("eedfcf").toFixed(1), "/ 5");
+  rateProduct("eedfcf", "Andrew2", 5);
+  console.log("Average rating:", getAverageRating("eedfcf").toFixed(1), "/ 5");
+  rateProduct("eedfcf", "Andrew3", 5);
   console.log();
 };
 main();
