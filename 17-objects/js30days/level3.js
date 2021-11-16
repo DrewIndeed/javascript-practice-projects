@@ -78,7 +78,7 @@ let products = [
 	b. Create a function called signIn which allows user to sign in to the application ✅
 
 	2/ The products array has three elements and each of them has six properties. 
-	a. Create a function called rateProduct which rates the product 
+	a. Create a function called rateProduct which rates the product ✅
 	b. Create a function called averageRating which 
 		calculate the average rating of a product
 
@@ -122,7 +122,8 @@ const createUser = (username, email, password) => {
   const alreadyExistInDatabase = users.some((user) => user.email === email);
 
   // return message if alraeady exists
-  if (alreadyExistInDatabase) console.log(`Email '${email}' has been already used!`);
+  if (alreadyExistInDatabase)
+    console.log(`Email '${email}' has been already used!`);
 
   // handle if id is duplicated
   let newId = getSimpleUserId(6);
@@ -169,28 +170,23 @@ const signIn = (user) => {
  *  + Rating product is always existing -> found
  *  + User's id is valid -> exist
  */
-const rateProduct = (productId, user, rating) => {
+const rateProduct = (product, user, rating) => {
   // prevent rating if user is not logged in
   if (!user.isLoggedIn) {
-		console.log("Please log in before rating!");
-		return;
-	}
+    console.log("Please log in before rating!");
+    return;
+  }
 
   // create an object of userId + his/her rating
   const userRating = { userId: user._id, rate: rating };
 
   // add that object to the ratings array of product with id of productId
-  products.map((product) => {
-    if (product._id === productId) {
-      product.ratings.push(userRating);
-      console.log(`Product with id of '${productId}' has been rated`);
-			console.log(product.ratings);
-			return;
-    }
-	});
+  product.ratings.push(userRating);
+  console.log(`Product with id of '${product._id}' has been rated`);
+  console.log(product.ratings);
 };
 
 // ? Small tesing
-// rateProduct("hedfcg", users[0], 5);
+// rateProduct(products[2], users[0], 5);
 // console.log(signIn(users[0]));
-// rateProduct("hedfcg", users[0], 5);
+// rateProduct(products[2], users[0], 5);
