@@ -122,15 +122,15 @@ const createUser = (username, email, password) => {
   const alreadyExistInDatabase = users.some((user) => user.email === email);
 
   // return message if alraeady exists
-  if (alreadyExistInDatabase) return `Email '${email}' has been already used!`;
+  if (alreadyExistInDatabase) console.log(`Email '${email}' has been already used!`);
 
-	// handle if id is duplicated
-	let newId = getSimpleUserId(6);
-	const idAlreadyExists = users.some(user => user.id === newId);
-	while (idAlreadyExists) {
-		newId = getSimpleUserId(6);
-		idAlreadyExists = users.some(user => user.id === newId);
-	}
+  // handle if id is duplicated
+  let newId = getSimpleUserId(6);
+  const idAlreadyExists = users.some((user) => user.id === newId);
+  while (idAlreadyExists) {
+    newId = getSimpleUserId(6);
+    idAlreadyExists = users.some((user) => user.id === newId);
+  }
 
   // if not exist, create new user
   const newUserProfile = {
@@ -156,7 +156,41 @@ const createUser = (username, email, password) => {
  * Method to sign a user in
  */
 const signIn = (user) => {
-	if (user.isLoggedIn) return "Already logged in";
-	user.isLoggedIn = true;
-	return "Logged In";
-}
+  if (user.isLoggedIn) return "Already logged in";
+  user.isLoggedIn = true;
+  return "Logged in";
+};
+
+/*
+ * Method for user to rate a product
+ * Assuming that:
+ * 	+ When the same user rates again, new rating will be created, instead of updating existing rating.
+ * 	+ Rating are in range from 0 to 5;
+ *  + Rating product is always existing -> found
+ *  + User's id is valid -> exist
+ */
+const rateProduct = (productId, user, rating) => {
+  // prevent rating if user is not logged in
+  if (!user.isLoggedIn) {
+		console.log("Please log in before rating!");
+		return;
+	}
+
+  // create an object of userId + his/her rating
+  const userRating = { userId: user._id, rate: rating };
+
+  // add that object to the ratings array of product with id of productId
+  products.map((product) => {
+    if (product._id === productId) {
+      product.ratings.push(userRating);
+      console.log(`Product with id of '${productId}' has been rated`);
+			console.log(product.ratings);
+			return;
+    }
+	});
+};
+
+// ? Small tesing
+// rateProduct("hedfcg", users[0], 5);
+// console.log(signIn(users[0]));
+// rateProduct("hedfcg", users[0], 5);
