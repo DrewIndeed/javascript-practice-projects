@@ -1,3 +1,19 @@
+/*
+  1/ Imagine you are getting the above users collection from a MongoDB database. 
+	a. Create a function called signUp which allows user to add to the collection. 
+		If user exists, inform the user that he has already an account. ✅
+	b. Create a function called signIn which allows user to sign in to the application ✅
+
+	2/ The products array has three elements and each of them has six properties. 
+	a. Create a function called rateProduct which rates the product ✅
+	b. Create a function called averageRating which 
+		calculate the average rating of a product ✅
+
+	3/ Create a function called likeProduct. 
+	This function will help to like to the product if it is not liked 
+	and remove like if it was liked. ✅
+*/
+
 let users = [
   {
     _id: "ab12ex",
@@ -72,22 +88,6 @@ let products = [
 ];
 
 /*
-	1/ Imagine you are getting the above users collection from a MongoDB database. 
-	a. Create a function called signUp which allows user to add to the collection. 
-		If user exists, inform the user that he has already an account. ✅
-	b. Create a function called signIn which allows user to sign in to the application ✅
-
-	2/ The products array has three elements and each of them has six properties. 
-	a. Create a function called rateProduct which rates the product ✅
-	b. Create a function called averageRating which 
-		calculate the average rating of a product ✅
-
-	3/ Create a function called likeProduct. 
-	This function will help to like to the product if it is not liked 
-	and remove like if it was liked.
-*/
-
-/*
  * Method to generate an id for the user when signed up
  */
 const getSimpleUserId = (length) => {
@@ -118,12 +118,23 @@ const getSimpleUserId = (length) => {
  * }
  */
 const createUser = (username, email, password) => {
-  // check if user already exists in database by comparing emails
-  const alreadyExistInDatabase = users.some((user) => user.email === email);
+  // check if user's username already exists in database by comparing usernames
+  const usernameAlreadyExist = users.some((user) => user.username === username);
 
-  // return message if alraeady exists
-  if (alreadyExistInDatabase)
+  // return message if already exists
+  if (usernameAlreadyExist) {
+    console.log(`Username '${username}' has been already used!`);
+    return;
+  }
+
+  // check if user's email already exists in database by comparing emails
+  const emailAlreadyExist = users.some((user) => user.email === email);
+
+  // return message if already exists
+  if (emailAlreadyExist) {
     console.log(`Email '${email}' has been already used!`);
+    return;
+  }
 
   // handle if id is duplicated
   let newId = getSimpleUserId(6);
@@ -147,19 +158,30 @@ const createUser = (username, email, password) => {
   users.push(newUserProfile);
 
   // print out messages
-  console.log("Updated users database. Showing last three profiles...");
+  console.log("Updated users database. Showing last 2 profiles...");
 
   // print out the last 3 users in the database
-  console.log(users.slice(users.length - 3, users.length));
+  console.log(users.slice(users.length - 2, users.length));
 };
 
 /*
  * Method to sign a user in
  */
-const signIn = (user) => {
-  if (user.isLoggedIn) return "Already logged in";
-  user.isLoggedIn = true;
-  return "Logged in";
+const signIn = (email, password) => {
+  const userHasSignedUp = users.some(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (userHasSignedUp) {
+    const signingInUser = users.filter(
+      (user) => user.email === email && user.password === password
+    );
+    if (signingInUser[0].isLoggedIn)
+      return `${signingInUser[0].username} already signed in`;
+    signingInUser[0].isLoggedIn = true;
+    return `Logged in ${signingInUser[0].username} successfully`;
+  }
+  return "Profile does not exist. Please sign up!";
 };
 
 /*
@@ -229,3 +251,20 @@ const likeProduct = (product, user) => {
 // likeProduct(products[2], users[0]);
 // likeProduct(products[2], users[1]);
 // likeProduct(products[2], users[1]);
+
+const main = () => {
+  // * signing up users (valid)
+  createUser("Andrew1", "andrew1@com", "1234");
+  createUser("Andrew2", "andrew2@com", "2345");
+  createUser("Andrew3", "andrew3@com", "3456");
+  // * signing up users (invalid)
+  createUser("Andrew4", "alex@alex.com", "1234");
+  createUser("Andrew1", "andrew4@com", "1234");
+
+  // * signing in valid users (valid)
+  console.log(signIn("andrew1@com", "1234"));
+  console.log(signIn("andrew2@com", "2345"));
+  // * signing in valid users (valid)
+  console.log(signIn("andrew4@com", "3456"));
+};
+main();
