@@ -124,9 +124,17 @@ const createUser = (username, email, password) => {
   // return message if alraeady exists
   if (alreadyExistInDatabase) return `Email '${email}' has been already used!`;
 
+	// handle if id is duplicated
+	let newId = getSimpleUserId(6);
+	const idAlreadyExists = users.some(user => user.id === newId);
+	while (idAlreadyExists) {
+		newId = getSimpleUserId(6);
+		idAlreadyExists = users.some(user => user.id === newId);
+	}
+
   // if not exist, create new user
   const newUserProfile = {
-    _id: getSimpleUserId(6),
+    _id: newId,
     username: username,
     email: email,
     password: password,
