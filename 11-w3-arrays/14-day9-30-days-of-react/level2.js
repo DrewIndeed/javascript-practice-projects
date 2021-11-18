@@ -48,3 +48,16 @@ const result7 = Object.entries(result4).reduce((compareFrom, compareTo) =>
   compareTo[1] > compareFrom[1] ? compareTo : compareFrom
 );
 console.log("The letter used many times as initial for country name:", result7);
+
+console.log("First 10 countries:", countries.slice(0, 11));
+console.log(
+  "Last 10 countries:",
+  countries.slice(countries.length - 10, countries.length)
+);
+
+const categorizeCountries = (pattern) => {
+  return countries.filter((country) =>
+    country.name.toLowerCase().includes(pattern.toLowerCase())
+  );
+};
+console.log("CATEGORIZE BY PATTERN:", categorizeCountries("island"));
