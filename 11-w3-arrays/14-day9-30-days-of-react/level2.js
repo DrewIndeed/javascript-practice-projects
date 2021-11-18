@@ -36,3 +36,15 @@ const result2 = products.reduce(
   0
 );
 console.log("Sum of prices of products using reduce only:", result2);
+
+const result4 = countries.reduce((frequency, country) => {
+  if (!frequency[country.name.charAt(0)]) frequency[country.name.charAt(0)] = 1;
+  else frequency[country.name.charAt(0)]++;
+  return frequency;
+}, {});
+console.log("Count frequency of countries' starting letters:", result4);
+
+const result7 = Object.entries(result4).reduce((compareFrom, compareTo) =>
+  compareTo[1] > compareFrom[1] ? compareTo : compareFrom
+);
+console.log("The letter used many times as initial for country name:", result7);
