@@ -24,19 +24,24 @@ countries
   );
 
 console.log(
-  " --------------------------- QUERY MOST SPOKEN LANGUAGES ---------------------------\n"
+  " --------------------------- QUERY MOST SPOKEN LANGUAGES AND MOST POPULATED COUNTRY ---------------------------\n"
 );
 // Get a number of most spoken languages
-const mostSpokenLanguages = (data, quanityOption) => {
+const mostOfCountries = (data, quanityOption, param, displayKeyStr) => {
   if (Object.keys(data).length < quanityOption || quanityOption < 0)
     return "Invalid quantity!";
 
   // create a counting object for countries' languages
   const countResultObj = data.reduce((frequency, country) => {
-    country.languages.forEach((lg) => {
-      if (!frequency[lg]) frequency[lg] = 1;
-      else frequency[lg]++;
-    });
+    if (Array.isArray(country[param])) {
+      country[param].forEach((lg) => {
+        if (!frequency[lg]) frequency[lg] = 1;
+        else frequency[lg]++;
+      });
+    } else {
+      if (!frequency[country.name])
+        frequency[country.name] = country.population;
+    }
     return frequency;
   }, {});
 
@@ -49,9 +54,16 @@ const mostSpokenLanguages = (data, quanityOption) => {
   return sortByFrequency.slice(0, quanityOption).reduce((toObjArray, item) => {
     let tempObj = {};
     tempObj["country"] = item[0];
-    tempObj["count"] = item[1];
+    tempObj[displayKeyStr] = item[1];
     toObjArray.push(tempObj);
     return toObjArray;
   }, []);
 };
-console.log(mostSpokenLanguages(countries, 5));
+console.log(
+  "Most spoken laguages:",
+  mostOfCountries(countries, 5, "languages", "count")
+);
+console.log(
+  "Most populated country:",
+  mostOfCountries(countries, 5, "population", "population")
+);
