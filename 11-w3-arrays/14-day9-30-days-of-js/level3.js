@@ -27,8 +27,8 @@ console.log(
   " --------------------------- QUERY MOST SPOKEN LANGUAGES ---------------------------\n"
 );
 // Get a number of most spoken languages
-const mostSpokenLanguages = (data, quanity) => {
-  if (Object.keys(data).length < quantity || quantity < 0)
+const mostSpokenLanguages = (data, quanityOption) => {
+  if (Object.keys(data).length < quanityOption || quanityOption < 0)
     return "Invalid quantity!";
 
   // create a counting object for countries' languages
@@ -46,6 +46,12 @@ const mostSpokenLanguages = (data, quanity) => {
   );
 
   // slicing according to the quantity and return the result
-  return sortByFrequency.slice(0, quanity);
+  return sortByFrequency.slice(0, quanityOption).reduce((toObjArray, item) => {
+    let tempObj = {};
+    tempObj["country"] = item[0];
+    tempObj["count"] = item[1];
+    toObjArray.push(tempObj);
+    return toObjArray;
+  }, []);
 };
 console.log(mostSpokenLanguages(countries, 5));
