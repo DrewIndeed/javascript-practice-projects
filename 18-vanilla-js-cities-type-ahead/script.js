@@ -57,11 +57,13 @@ const displayResult = (e) => {
         `<span class="hl">${e.target.value}</span>`
       );
 
+      const population = numberWithCommas(location.population);
+
       // return li html component with attached and highlighted data
       return `
         <li>
           <span class="name">${cityName}, ${stateName}</span>
-          <span class="population">${location.population}</span>
+          <span class="population">${population}</span>
         </li>
       `;
     })
@@ -77,3 +79,6 @@ searchInput.addEventListener("keyup", displayResult);
 searchInput.addEventListener("keydown", displayResult);
 
 // TODO Step 5: Write a function of put commas into population value
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
