@@ -38,15 +38,22 @@ const searchInput = document.querySelector(".search");
 const suggestionsList = document.querySelector(".suggestions");
 
 const displayResult = (e) => {
+  // get current input value
   const matchingPlaces = matchSearch(e.target.value, citiesResult);
-  const renderAsListItems = matchingPlaces.map(
-    (location) => `
+
+  // create an array of <li> items
+  const renderAsListItems = matchingPlaces
+    .map(
+      (location) => `
     <li>
       <span class="name">${location.city}, ${location.state}</span>
       <span class="population">${location.population}</span>
     </li>
   `
-  ).join("");
+    )
+    .join(""); // join the as a big string
+
+  // set the html content cities <ul> as the big <li> items string
   suggestionsList.innerHTML = renderAsListItems;
 };
 
