@@ -43,14 +43,28 @@ const displayResult = (e) => {
 
   // create an array of <li> items
   const renderAsListItems = matchingPlaces
-    .map(
-      (location) => `
-    <li>
-      <span class="name">${location.city}, ${location.state}</span>
-      <span class="population">${location.population}</span>
-    </li>
-  `
-    )
+    .map((location) => {
+      // TODO Step 4.1: Highlight search part from list items' names of cities and states
+      const regex = new RegExp(e.target.value, "gi");
+      // create s span to wrap around searching
+      // part and use 'hl' class to hightlight
+      const cityName = location.city.replace(
+        regex,
+        `<span class="hl">${e.target.value}</span>`
+      );
+      const stateName = location.state.replace(
+        regex,
+        `<span class="hl">${e.target.value}</span>`
+      );
+
+      // return li html component with attached and highlighted data
+      return `
+        <li>
+          <span class="name">${cityName}, ${stateName}</span>
+          <span class="population">${location.population}</span>
+        </li>
+      `;
+    })
     .join(""); // join the as a big string
 
   // set the html content cities <ul> as the big <li> items string
@@ -62,5 +76,4 @@ searchInput.addEventListener("change", displayResult);
 searchInput.addEventListener("keyup", displayResult);
 searchInput.addEventListener("keydown", displayResult);
 
-// TODO Step 4.1: Highlight search part from list items' names of cities and states
 // TODO Step 5: Write a function of put commas into population value
