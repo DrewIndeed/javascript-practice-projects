@@ -1,4 +1,10 @@
 /*
+! SOME NOTES
+* https://mothereffinghsl.com/ -> This website helps to visual like HSL (hue, saturation, and lightness) (aka rainbow)
+*  
+*/
+
+/*
 TODO step 1: Default settings before working with the canvas
 */
 // get the canvas from component tree
@@ -32,6 +38,7 @@ let isDrawing = false;
 // keep track of the last position of the brush
 let lastX = 0;
 let lastY = 0;
+let hue = 0;
 
 /*
 TODO step 6: Implememnt the method to render the drawings on the canvas
@@ -42,6 +49,7 @@ const painter = (e) => {
   console.log(e);
 
   // create drawing line
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   // begin render the line
   ctx.beginPath();
   // starting from here, create a line to...
@@ -54,6 +62,15 @@ const painter = (e) => {
   TODO Step 6.1: move last X and last Y to last destination X and Y wherever mouse moves to recoordinate the starting location of the brush
   */
   [lastX, lastY] = [e.offsetX, e.offsetY];
+
+  /*
+  TODO Step 6.2: create rainbow effect using hsl()
+  */
+  // increment hue to change color -> create rainbow effect
+  hue++;
+  // if the color has finshed the whole color palette, r
+  // reset the hue to not get the number to be too big
+  if (hue >= 360) hue = 0;
 };
 
 /*
