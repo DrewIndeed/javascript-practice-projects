@@ -46,13 +46,22 @@ const painter = (e) => {
   // ... to here
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
+
+  // move last X and last Y to last destination X and Y wherever mouse moves
+  // to recoordinate the starting location of the brush
+  [lastX, lastY] = [e.offsetX, e.offsetY];
 }
 
 /*
 TODO step 5: binding events with the canvas and the brush (the mouse)
 */
 // only when the user click and drag, that the canvas shows something
-canvas.addEventListener('mousedown', () => isDrawing = true);
+canvas.addEventListener('mousedown', (e) => {
+  // set mode as it is drawing
+  isDrawing = true;
+  // recoordinate the starting point of the mouse before dragging
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
 canvas.addEventListener('mousemove', painter);
 // only when the user click and drag, otherwise, ignore
 canvas.addEventListener('mouseup', () => isDrawing = false);
