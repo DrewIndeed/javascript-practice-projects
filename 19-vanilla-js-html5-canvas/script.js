@@ -1,7 +1,7 @@
 /*
 ! SOME NOTES
 * https://mothereffinghsl.com/ -> This website helps to visual like HSL (hue, saturation, and lightness) (aka rainbow)
-*  
+* There are different type of 'canvas rendering context' which can give different effects so you can google about it if you want
 */
 
 /*
@@ -39,6 +39,7 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 let hue = 0;
+let direction = true;
 
 /*
 TODO step 6: Implememnt the method to render the drawings on the canvas
@@ -71,6 +72,15 @@ const painter = (e) => {
   // if the color has finshed the whole color palette, r
   // reset the hue to not get the number to be too big
   if (hue >= 360) hue = 0;
+
+  /*
+  TODO Step 6.3: change the brush width, while drawing
+  */
+  // flip the direction of the line width goes too big or too small as defined
+  if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) direction = !direction;
+  // change the width of the brush
+  if (direction) ctx.lineWidth++;
+  else ctx.lineWidth--;
 };
 
 /*
