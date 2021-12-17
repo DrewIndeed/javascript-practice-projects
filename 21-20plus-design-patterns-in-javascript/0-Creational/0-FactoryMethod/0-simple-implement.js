@@ -1,3 +1,5 @@
+// ! Source: https://dev.to/dhiwise/advanced-javascript-design-patterns-4k8l
+
 // this is the interface
 class Point {
   constructor(x, y) {
