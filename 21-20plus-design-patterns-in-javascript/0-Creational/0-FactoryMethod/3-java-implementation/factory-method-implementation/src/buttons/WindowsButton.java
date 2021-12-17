@@ -4,7 +4,7 @@ package buttons;
  * Concrete product 2
  * WINDOW button implementation.
  */
-public class WindowButton implements Button {
+public class WindowsButton implements Button {
 
     public void render() {
         System.out.println("--- RENDER WINDOW BUTTON ---");
