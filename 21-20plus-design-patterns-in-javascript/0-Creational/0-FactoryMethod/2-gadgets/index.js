@@ -1,3 +1,4 @@
+// ! Source: https://medium.com/@thebabscraig/javascript-design-patterns-part-1-the-factory-pattern-5f135e881192
 import { gadgetFactory } from "./gadgetFactory.js";
 
 const myLaptop = gadgetFactory.createGadget("Laptop", {
