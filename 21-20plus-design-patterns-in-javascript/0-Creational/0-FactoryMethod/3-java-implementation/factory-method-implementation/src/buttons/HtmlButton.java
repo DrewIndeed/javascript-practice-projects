@@ -6,7 +6,7 @@ package buttons;
  */
 public class HtmlButton implements Button {
     public void render() {
-      System.out.println("--- RENDER HTML BUTTON ---");
+        System.out.println("--- RENDER HTML BUTTON ---");
         onClick();
     }
 
