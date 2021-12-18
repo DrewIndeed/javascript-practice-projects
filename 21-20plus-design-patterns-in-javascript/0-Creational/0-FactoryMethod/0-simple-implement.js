@@ -7,12 +7,13 @@ class Point {
     this.y = y;
   }
 
+  // This method is ONLY FOR DEMONSTRATION
   // static getter, read more at
   // https://stackoverflow.com/questions/42884751/whats-the-meaning-of-static-get-in-javascript-es6
   // this is the factory method that is specified in the interface
-  static get factory() {
-    return new PointFactory(); // a class that represents the point factory
-  }
+  // static get factory() {
+  //   return new PointFactory(); // a class that represents the point factory
+  // }
 }
 
 // this the child class that implements the interface
