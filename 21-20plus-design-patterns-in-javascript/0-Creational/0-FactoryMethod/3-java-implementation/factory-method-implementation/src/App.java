@@ -1,7 +1,7 @@
 import factory.*;
 
 /**
- * Client
+ * CLIENT
  * 
  * Demo class. Everything comes together here.
  */

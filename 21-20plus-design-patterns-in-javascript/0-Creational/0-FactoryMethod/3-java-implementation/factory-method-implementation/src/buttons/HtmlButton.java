@@ -1,7 +1,8 @@
 package buttons;
 
 /**
- * Concrete product 1
+ * CONCRETE PRODUCT 1
+ * 
  * HTML button implementation.
  */
 public class HtmlButton implements Button {

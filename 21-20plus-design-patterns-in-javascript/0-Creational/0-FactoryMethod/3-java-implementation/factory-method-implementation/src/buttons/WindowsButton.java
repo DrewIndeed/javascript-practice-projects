@@ -1,7 +1,8 @@
 package buttons;
 
 /**
- * Concrete product 2
+ * CONCRETE PRODUCT 2
+ * 
  * WINDOW button implementation.
  */
 public class WindowsButton implements Button {
