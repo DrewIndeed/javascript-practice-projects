@@ -1,8 +1,12 @@
 package factories;
 
+import buttons.Button;
+import checkboxes.Checkbox;
+
 /*
 * ABSTRACT FACTORY
 */
-public class GUIFactory {
-  
+public interface GUIFactory {
+  Button createButton();
+  Checkbox createCheckbox();
 }
