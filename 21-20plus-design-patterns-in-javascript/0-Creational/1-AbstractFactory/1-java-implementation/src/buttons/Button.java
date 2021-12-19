@@ -3,6 +3,6 @@ package buttons;
 /*
 * PRODUCT FAMILY 1
 */
-public class Button {
-  
+public interface Button {
+  void paint();
 }
